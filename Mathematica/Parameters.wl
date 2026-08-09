@@ -112,61 +112,39 @@ zetaT =kB*T/(z*e);
    PosDb = 2 kB T nInf
 *)
 
-PosDb =
-  2*kB*T*nInf;
-
-
+PosDb =2*kB*T*nInf;
 (* Bulk electrical conductivity [S/m]
-
-   sigmaInf =
-   2 e^2 z^2 DiffCoeff nInf / (kB T)
+   sigmaInf =2 e^2 z^2 DiffCoeff nInf / (kB T)
 *)
 
-sigmaInf =
-  2*e^2*z^2*DiffCoeff*nInf/
-  (kB*T);
-
+sigmaInf =2*e^2*z^2*DiffCoeff*nInf/(kB*T);
 
 (* Dimensionless surface potential
-
    PsiS = zeta / zetaT
 *)
 
-PsiS =
-  zeta/zetaT;
-
+PsiS =zeta/zetaT;
 
 (* ========================================================= *)
 (* 5. DIMENSIONLESS PARAMETERS                               *)
 (* ========================================================= *)
 
 (* Reynolds number
-
    Re = rho Jw l / mu
 *)
-
-Reynolds =
-  rho*Jw*l/mu;
-
+Reynolds =rho*Jw*l/mu;
 
 (* Geometric aspect ratio
+  xi = a/l*)
 
-   xi = a/l
-*)
-
-xi =
-  a/l;
-
+xi =a/l;
 
 (* Dimensionless Debye parameter
-
    delta = a kappa
          = a/lambdaD
 *)
 
-delta =
-  a*kappa;
-
+delta =a*kappa;
 
 (* Dimensionless parameter associated with the
    electric-field-dependent viscosity model
@@ -174,8 +152,7 @@ delta =
    omega = f (zetaT/a)^2
 *)
 
-omega =
-  f*(zetaT/a)^2;
+omega =f*(zetaT/a)^2;
 
 
 (* Ratio of osmotic pressure to the characteristic
