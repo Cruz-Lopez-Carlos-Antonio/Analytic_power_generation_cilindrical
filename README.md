@@ -36,7 +36,119 @@ The physical parameters employed in the numerical implementation are summarized 
 
 These physical quantities are used directly to reconstruct the dimensionless parameters required by the governing equations. In particular, the dimensionless quantities are **not introduced independently as numerical input values**, but are computed from the corresponding dimensional properties.
 
+### Dimensionless Parameters
+
+For the physical conditions considered in the implementation, the reference dimensionless parameters are
+
+| Parameter | Symbol | Reference value |
+|---|---:|---:|
+| Reynolds number | $\mathrm{Re}$ | $9.7455\times10^{-4}$ |
+| Aspect ratio | $\xi$ | $1.0\times10^{-5}$ |
+| Dimensionless Debye parameter | $\delta$ | $23.2419$ |
+| Pressure-related parameter | $\alpha$ | $3.2025\times10^{12}$ |
+| Electrohydrodynamic coupling parameter | $\Lambda$ | $0.759514$ |
+| Viscoelectric parameter | $\omega$ | $0.00151706$ |
+
+In particular, the geometrical aspect ratio is
+
+$$
+\xi=\frac{a}{l},
+$$
+
+whereas
+
+$$
+\delta=a\kappa,
+$$
+
+with $\kappa^{-1}$ denoting the Debye length. Thus, $\delta$ represents the ratio between the microchannel radius and the characteristic Debye length.
+
+The dimensionless surface potential is defined as
+
+$$
+\Psi_s=\frac{\zeta}{\zeta_T},
+$$
+
+where the thermal potential is
+
+$$
+\zeta_T=\frac{k_B T}{ze}.
+$$
+
+Here, $k_B$ is the Boltzmann constant and $e$ is the elementary charge. The notation $\Psi_s$ is used for the dimensionless surface potential to distinguish it from the dimensionless axial coordinate $Z$.
+
 ### Dimensionless Governing Equations
+
+The electric potential within the electrical double layer is governed by the cylindrical Poisson–Boltzmann equation
+
+$$
+\frac{d^2\Psi}{dR^2}
++
+\frac{1}{R}\frac{d\Psi}{dR}
+=
+\delta^2\sinh\!\left(\Psi\right),
+\qquad 0\leq R\leq1,
+$$
+
+subject to the boundary conditions
+
+$$
+\left.\frac{d\Psi}{dR}\right|_{R=0}=0,
+\qquad
+\Psi(1)=\Psi_s.
+$$
+
+The dimensionless viscoelectric correction to the viscosity is represented by
+
+$$
+M(R)
+=
+\exp\!\left[
+\omega
+\left(
+\frac{d\Psi}{dR}
+\right)^2
+\right].
+$$
+
+Once the electrostatic potential is known, the function $F(R)$ governing the axial velocity field satisfies
+
+$$
+0=
+-\Pi_D
++
+\frac{1}{R}
+\frac{d}{dR}
+\left[
+M(R)R\frac{dF}{dR}
+\right]
+-
+\Lambda\delta^2
+\sinh\!\left(\Psi(R)\right)\Omega,
+$$
+
+where
+
+$$
+\Pi_D=\alpha\xi^2,
+$$
+
+and the electrohydrodynamic coupling quantity $\Omega$ is defined through the integral relation
+
+$$
+\Omega
+=
+\int_0^1
+F(R)\sinh\!\left(\Psi(R)\right)R\,dR.
+$$
+
+The corresponding boundary conditions for $F(R)$ are
+
+$$
+\left.\frac{dF}{dR}\right|_{R=0}=0,
+\qquad
+F(1)=0.
+$$
 
 #### Poisson–Boltzmann Equation
 
