@@ -84,47 +84,26 @@ zeta = N[-3165/10^5, wpPar];
 (* ========================================================= *)
 
 (* Number density [m^-3]
-
    nInf = 1000 Cbulk NA
 *)
-
-nInf =
-  1000*Cbulk*NA;
-
+nInf =1000*Cbulk*NA;
 
 (* Inverse Debye length kappa [m^-1]
-
-   kappa =
-   Sqrt[
-      2 z^2 e^2 nInf /
-      (epsilon kB T)
-   ]
+   kappa =Sqrt[2 z^2 e^2 nInf /
+      (epsilon kB T)]
 *)
 
-kappa =
-  Sqrt[
-    (2*z^2*e^2*nInf)/
-    (epsilon*kB*T)
-  ];
-
+kappa =Sqrt[(2*z^2*e^2*nInf)/(epsilon*kB*T)];
 
 (* Debye length [m]
-
    lambdaD = 1/kappa
 *)
 
-lambdaD =
-  1/kappa;
-
-
+lambdaD =1/kappa;
 (* Thermal potential [V]
-
    zetaT = kB T / (z e)
 *)
-
-zetaT =
-  kB*T/(z*e);
-
+zetaT =kB*T/(z*e);
 
 (* Bulk osmotic pressure of the draw solution [Pa]
 
