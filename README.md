@@ -17,22 +17,22 @@ The physical parameters employed in the numerical implementation are summarized 
 
 | Parameter | Symbol | Value | Unit |
 |---|---:|---:|---|
-| Microchannel length | $l$ | $1.0\times10^{-3}$ | m |
-| Microchannel radius | $a$ | $1.0\times10^{-8}$ | m |
-| Temperature | $T$ | $298$ | K |
-| Fluid density | $\rho$ | $1000$ | kg m$^{-3}$ |
-| Dynamic viscosity | $\mu$ | $0.891\times10^{-3}$ | Pa s |
-| Diffusion coefficient | $D$ | $1.312\times10^{-9}$ | m$^2$ s$^{-1}$ |
-| Permittivity | $\varepsilon$ | $6.954\times10^{-10}$ | C V$^{-1}$ m$^{-1}$ |
+| Microchannel length | $l$ | $1.0\times10^{-3}$ | $\mathrm{m}$ |
+| Microchannel radius | $a$ | $1.0\times10^{-8}$ | $\mathrm{m}$ |
+| Temperature | $T$ | $298$ | $\mathrm{K}$ |
+| Fluid density | $\rho$ | $1000$ | $\mathrm{kg\,m^{-3}}$ |
+| Dynamic viscosity | $\mu$ | $0.891\times10^{-3}$ | $\mathrm{Pa\,s}$ |
+| Diffusion coefficient | $D$ | $1.312\times10^{-9}$ | $\mathrm{m^2\,s^{-1}}$ |
+| Permittivity | $\varepsilon$ | $6.954\times10^{-10}$ | $\mathrm{C\,V^{-1}\,m^{-1}}$ |
 | Ionic valence | $z$ | $1$ | — |
-| Bulk osmotic concentration | $C_{\mathrm{osD},b}$ | $0.5$ | M |
-| Water flux | $J_w$ | $8.68327\times10^{-7}$ | m s$^{-1}$ |
+| Bulk osmotic concentration | $C_{\mathrm{osD},b}$ | $0.5$ | $\mathrm{M}$ |
+| Water flux | $J_w$ | $8.68327\times10^{-7}$ | $\mathrm{m\,s^{-1}}$ |
 | pH | $\mathrm{pH}$ | $7.0$ | — |
 | Dissociation constant | $\mathrm{p}K$ | $7.5$ | — |
-| Surface site density | $\Gamma$ | $8$ | nm$^{-2}$ |
-| Stern-layer capacitance | $C_{\mathrm{Stern}}$ | $2.9$ | F m$^{-2}$ |
-| Zeta potential | $\zeta$ | $-0.03165$ | V |
-| Viscoelectric coefficient | $f$ | $2.3\times10^{-16}$ | m$^2$ V$^{-2}$ |
+| Surface site density | $\Gamma$ | $8$ | $\mathrm{nm^{-2}}$ |
+| Stern-layer capacitance | $C_{\mathrm{Stern}}$ | $2.9$ | $\mathrm{F\,m^{-2}}$ |
+| Zeta potential | $\zeta$ | $-0.03165$ | $\mathrm{V}$ |
+| Viscoelectric coefficient | $f$ | $2.3\times10^{-16}$ | $\mathrm{m^2\,V^{-2}}$ |
 
 These physical quantities are used directly to reconstruct the dimensionless parameters required by the governing equations. In particular, the dimensionless quantities are **not introduced independently as numerical input values**, but are computed from the corresponding dimensional properties.
 
