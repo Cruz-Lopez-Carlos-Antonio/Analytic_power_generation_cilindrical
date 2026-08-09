@@ -2,7 +2,7 @@
 
 ## Overview of the Repository
 
-The present repository contains the **Python** implementation of the semianalytical solution developed for the electrohydrodynamic model of power generation in cylindrical microchannels with high surface zeta potential.
+The present repository contains the **Python** and **Mathematica** implementations of the semianalytical solution developed for the electrohydrodynamic model of power generation in cylindrical microchannels with high surface zeta potential.
 
 The computational procedure follows the analytical formulation step by step. The electric potential distribution within the electrical double layer is first obtained from the nonlinear Poisson–Boltzmann equation. Once this potential is known, the remaining hydrodynamic and electrokinetic quantities are reconstructed through a sequence of numerical quadratures, including the axial velocity profile, streaming potential, pressure distribution, and energy-conversion efficiency.
 
