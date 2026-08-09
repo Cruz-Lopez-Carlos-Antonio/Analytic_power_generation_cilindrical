@@ -154,13 +154,10 @@ delta =a*kappa;
 
 omega =f*(zetaT/a)^2;
 
-
 (* Ratio of osmotic pressure to the characteristic
    pressure associated with the flow
 
    alpha = PosDb l / (mu Jw)
 *)
 
-alpha =
-  PosDb*l/(mu*Jw);
-
+alpha =PosDb*l/(mu*Jw);
