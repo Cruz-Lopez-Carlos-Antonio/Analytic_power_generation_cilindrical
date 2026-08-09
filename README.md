@@ -77,78 +77,7 @@ $$
 
 Here, $k_B$ is the Boltzmann constant and $e$ is the elementary charge. The notation $\Psi_s$ is used for the dimensionless surface potential to distinguish it from the dimensionless axial coordinate $Z$.
 
-### Dimensionless Governing Equations
-
-The electric potential within the electrical double layer is governed by the cylindrical Poisson–Boltzmann equation
-
-$$
-\frac{d^2\Psi}{dR^2}
-+
-\frac{1}{R}\frac{d\Psi}{dR}
-=
-\delta^2\sinh\!\left(\Psi\right),
-\qquad 0\leq R\leq1,
-$$
-
-subject to the boundary conditions
-
-$$
-\left.\frac{d\Psi}{dR}\right|_{R=0}=0,
-\qquad
-\Psi(1)=\Psi_s.
-$$
-
-The dimensionless viscoelectric correction to the viscosity is represented by
-
-$$
-M(R)
-=
-\exp\!\left[
-\omega
-\left(
-\frac{d\Psi}{dR}
-\right)^2
-\right].
-$$
-
-Once the electrostatic potential is known, the function $F(R)$ governing the axial velocity field satisfies
-
-$$
-0=
--\Pi_D
-+
-\frac{1}{R}
-\frac{d}{dR}
-\left[
-M(R)R\frac{dF}{dR}
-\right]
--
-\Lambda\delta^2
-\sinh\!\left(\Psi(R)\right)\Omega,
-$$
-
-where
-
-$$
-\Pi_D=\alpha\xi^2,
-$$
-
-and the electrohydrodynamic coupling quantity $\Omega$ is defined through the integral relation
-
-$$
-\Omega
-=
-\int_0^1
-F(R)\sinh\!\left(\Psi(R)\right)R\,dR.
-$$
-
-The corresponding boundary conditions for $F(R)$ are
-
-$$
-\left.\frac{dF}{dR}\right|_{R=0}=0,
-\qquad
-F(1)=0.
-$$
+## Dimensionless Governing Equations
 
 #### Poisson–Boltzmann Equation
 
