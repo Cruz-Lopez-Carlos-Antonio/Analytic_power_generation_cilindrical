@@ -72,8 +72,7 @@ epsPB = SetPrecision[10^-8, wpExt];
             = delta^2 Sinh[psi0] R^2/2
               + O(R^4).
 
-   These expressions supply the initial conditions
-   at R = epsPB.
+   These expressions supply the initial conditions at R = epsPB.
 *)
 
 (* ========================================================= *)
@@ -81,48 +80,32 @@ epsPB = SetPrecision[10^-8, wpExt];
 (* ========================================================= *)
 
 ClearAll[pbForCenter, psi, p, R];
-
 pbForCenter[psi0_?NumericQ] :=
   Module[
     {psi0PB},
-
     (* Force every shooting value to the solver precision using extended precision *)
     psi0PB = SetPrecision[psi0, wpExt];
-
     NDSolveValue[
       {
-
         psi'[R] == p[R]/R,
-
         p'[R] ==
           deltaPB^2*R*Sinh[psi[R]],
-
-
+          
         (* Regular initial value of Psi near the axis *)
-
-        psi[epsPB] ==
-          psi0PB
+        psi[epsPB] ==psi0PB
           +
           (deltaPB^2*Sinh[psi0PB]/4)*epsPB^2,
 
-
         (* Regular initial value of p = R Psi' *)
 
-        p[epsPB] ==
-          (deltaPB^2*Sinh[psi0PB]/2)*epsPB^2
+        p[epsPB] == (deltaPB^2*Sinh[psi0PB]/2)*epsPB^2
 
       },
-
       {psi, p},
-
       {R, epsPB, 1},
-
       WorkingPrecision -> wpPB,
-
       AccuracyGoal -> 18,
-
       PrecisionGoal -> 18,
-
       MaxSteps -> Infinity
     ]
   ];
@@ -131,27 +114,16 @@ pbForCenter[psi0_?NumericQ] :=
 (* 5. SHOOTING RESIDUAL                                      *)
 (* ========================================================= *)
 
-(*
-   For an assumed center potential psi0, integrate
-   to R = 1 and measure the mismatch
-
-       residual(psi0)
+(*For an assumed center potential psi0, integrate
+   to R = 1 and measure the mismatch residual(psi0)
        = Psi(1; psi0) - PsiS.
-
    The correct center potential makes this quantity zero.
 *)
 
 ClearAll[wallResidual];
-
 wallResidual[psi0_?NumericQ] :=
-  Module[
-    {sol},
-
-    sol = pbForCenter[psi0];
-
-    sol[[1]][1] - PsiSPB
-  ];
-
+  Module[{sol},sol = pbForCenter[psi0];
+    sol[[1]][1] - PsiSPB];
 
 (* ========================================================= *)
 (* 6. INITIAL ESTIMATE FROM LINEARIZED DEBYE-HUCKEL THEORY   *)
@@ -159,12 +131,8 @@ wallResidual[psi0_?NumericQ] :=
 
 (*
    The linearized cylindrical solution is
-
-       Psi(R) =
-       PsiS I0(delta R)/I0(delta).
-
+       Psi(R) =PsiS I0(delta R)/I0(delta).
    Hence
-
        Psi(0) = PsiS/I0(delta).
 
    This is used ONLY as an initial numerical estimate.
