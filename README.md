@@ -71,3 +71,93 @@ $$\Omega=\int_0^1F(R)\sinh\left(\Psi(R)\right)R\,dR.$$
 The corresponding boundary conditions for $F(R)$ are
 
 $$\left.\frac{dF}{dR}\right|_{R=0}=0, \qquad F(1)=0.$$
+
+## Semianalytical Solution and Computational Implementation
+
+Once the dimensionless electric potential $\Psi(R)$ has been obtained from the Poisson–Boltzmann equation, the remaining electrohydrodynamic problem can be reconstructed through a sequence of numerical quadratures.
+
+First, the auxiliary function
+
+$$H(R)=\int_0^R \tau\sinh\left(\Psi(\tau)\right)\,d\tau$$
+
+is introduced. The solution for $F(R)$ can then be decomposed as
+
+$$F(R)=F_0(R)+\Omega F_1(R),$$
+
+where
+
+$$F_0(R)=-\int_R^1\frac{\Pi_D s}{2M(s)}\,ds,$$
+
+and
+
+$$F_1(R)=-\Lambda\delta^2\int_R^1\frac{H(s)}{sM(s)}\,ds.$$
+
+To determine the global coupling quantity $\Omega$, the auxiliary integrals
+
+$$A=\int_0^1F_0(R)\sinh\left(\Psi(R)\right)R\,dR,$$
+
+and
+
+$$B=\int_0^1F_1(R)\sinh\left(\Psi(R)\right)R\,dR$$
+
+are evaluated. Substitution into the integral definition of $\Omega$ leads to the compact relation
+
+$$\Omega=\frac{A}{1-B},$$
+
+provided that $1-B\neq0$. The function $F(R)$ is subsequently reconstructed from $F_0(R)$, $F_1(R)$, and $\Omega$.
+
+### Pressure Gradient and Velocity Field
+
+The dimensionless modified-pressure gradient is determined from the flow-rate constraint
+
+$$\frac{1}{2}=\frac{d\widetilde{\Pi}}{dZ}\int_0^1RF(R)\,dR.$$
+
+Defining
+
+$$G:=\frac{d\widetilde{\Pi}}{dZ},$$
+
+the pressure gradient can therefore be written as
+
+$$G=\frac{1}{2\displaystyle\int_0^1RF(R)\,dR}.$$
+
+The axial velocity profile is then reconstructed as
+
+$$V_Z(R)=GF(R),$$
+
+which satisfies the dimensionless flow-rate condition
+
+$$\int_0^1RV_Z(R)\,dR=\frac{1}{2}.$$
+
+Since $G$ is constant, the axial velocity is independent of the axial coordinate $Z$. The continuity equation, together with the impermeability condition at the microchannel wall, consequently gives
+
+$$V_R(R,Z)=0.$$
+
+### Streaming Potential and Pressure Distribution
+
+The dimensionless streaming potential satisfies
+
+$$\frac{d\Phi}{dZ}=-\Lambda\delta^2G\Omega.$$
+
+Using the reference condition $\Phi(0)=0$, its axial distribution becomes
+
+$$\Phi(Z)=-\Lambda\delta^2G\Omega Z.$$
+
+Similarly, imposing $\widetilde{\Pi}(0)=1$ gives the modified pressure distribution
+
+$$\widetilde{\Pi}(Z)=GZ+1.$$
+
+The total dimensionless pressure is finally recovered as
+
+$$\Pi(R,Z)=\widetilde{\Pi}(Z)+\cosh\left(\Psi(R)\right).$$
+
+### Energy-Conversion Efficiency
+
+The dimensionless energy-conversion efficiency is evaluated from
+
+$$\eta=\eta_c\frac{\left(d\Phi/dZ\right)^2}{-d\Pi/dZ}.$$
+
+Since $\cosh\left(\Psi(R)\right)$ is independent of $Z$, it follows that $d\Pi/dZ=G$, and therefore
+
+$$\eta=\eta_c\frac{\left(\Lambda\delta^2G\Omega\right)^2}{-G}.$$
+
+The parameter $\eta_c$ is reconstructed from the physical properties employed in the model rather than introduced independently as a numerical input.
