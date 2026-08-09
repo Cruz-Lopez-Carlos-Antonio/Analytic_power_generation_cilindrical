@@ -7,3 +7,145 @@ The present repository contains the **Python** implementation of the semianalyti
 The computational procedure follows the analytical formulation step by step. The electric potential distribution within the electrical double layer is first obtained from the nonlinear Poisson–Boltzmann equation. Once this potential is known, the remaining hydrodynamic and electrokinetic quantities are reconstructed through a sequence of numerical quadratures, including the axial velocity profile, streaming potential, pressure distribution, and energy-conversion efficiency.
 
 The implementation is primarily based on **NumPy** and **SciPy** as well as **Wolfram Mathematica** and is organized to allow the numerical verification of each stage of the semianalytical solution. In particular, the code includes consistency checks for the governing equations, boundary conditions, integral constraints, and numerical convergence.
+## Theoretical Framework
+
+The computational implementation is based on the dimensionless formulation of the electrohydrodynamic transport problem in a cylindrical microchannel. The model couples the electric potential distribution within the electrical double layer with the hydrodynamic and electrokinetic fields responsible for pressure-driven flow and streaming-potential generation.
+
+### Physical Parameters
+
+The physical parameters employed in the numerical implementation are summarized below.
+
+| Parameter | Symbol | Value | Unit |
+|---|---:|---:|---|
+| Microchannel length | $l$ | $1.0\times10^{-3}$ | m |
+| Microchannel radius | $a$ | $1.0\times10^{-8}$ | m |
+| Temperature | $T$ | $298$ | K |
+| Fluid density | $\rho$ | $1000$ | kg m$^{-3}$ |
+| Dynamic viscosity | $\mu$ | $0.891\times10^{-3}$ | Pa s |
+| Diffusion coefficient | $D$ | $1.312\times10^{-9}$ | m$^2$ s$^{-1}$ |
+| Permittivity | $\varepsilon$ | $6.954\times10^{-10}$ | C V$^{-1}$ m$^{-1}$ |
+| Ionic valence | $z$ | $1$ | — |
+| Bulk osmotic concentration | $C_{\mathrm{osD},b}$ | $0.5$ | M |
+| Water flux | $J_w$ | $8.68327\times10^{-7}$ | m s$^{-1}$ |
+| pH | $\mathrm{pH}$ | $7.0$ | — |
+| Dissociation constant | $\mathrm{p}K$ | $7.5$ | — |
+| Surface site density | $\Gamma$ | $8$ | nm$^{-2}$ |
+| Stern-layer capacitance | $C_{\mathrm{Stern}}$ | $2.9$ | F m$^{-2}$ |
+| Zeta potential | $\zeta$ | $-0.03165$ | V |
+| Viscoelectric coefficient | $f$ | $2.3\times10^{-16}$ | m$^2$ V$^{-2}$ |
+
+These physical quantities are used directly to reconstruct the dimensionless parameters required by the governing equations. In particular, the dimensionless quantities are **not introduced independently as numerical input values**, but are computed from the corresponding dimensional properties.
+
+### Dimensionless Parameters
+
+For the physical conditions considered in the implementation, the reference dimensionless parameters are
+
+| Parameter | Symbol | Reference value |
+|---|---:|---:|
+| Reynolds number | $\mathrm{Re}$ | $9.7455\times10^{-4}$ |
+| Aspect ratio | $\xi$ | $1.0\times10^{-5}$ |
+| Dimensionless Debye parameter | $\delta$ | $23.2419$ |
+| Pressure-related parameter | $\alpha$ | $3.2025\times10^{12}$ |
+| Electrohydrodynamic coupling parameter | $\Lambda$ | $0.759514$ |
+| Viscoelectric parameter | $\omega$ | $0.00151706$ |
+
+In particular, the geometrical aspect ratio is
+
+$$
+\xi=\frac{a}{l},
+$$
+
+whereas
+
+$$
+\delta=a\kappa,
+$$
+
+with $\kappa^{-1}$ denoting the Debye length. Thus, $\delta$ represents the ratio between the microchannel radius and the characteristic Debye length.
+
+The dimensionless surface potential is defined as
+
+$$
+\Psi_s=\frac{\zeta}{\zeta_T},
+$$
+
+where the thermal potential is
+
+$$
+\zeta_T=\frac{k_B T}{ze}.
+$$
+
+Here, $k_B$ is the Boltzmann constant and $e$ is the elementary charge. The notation $\Psi_s$ is used for the dimensionless surface potential to distinguish it from the dimensionless axial coordinate $Z$.
+
+### Dimensionless Governing Equations
+
+The electric potential within the electrical double layer is governed by the cylindrical Poisson–Boltzmann equation
+
+$$
+\frac{d^2\Psi}{dR^2}
++
+\frac{1}{R}\frac{d\Psi}{dR}
+=
+\delta^2\sinh\!\left(\Psi\right),
+\qquad 0\leq R\leq1,
+$$
+
+subject to the boundary conditions
+
+$$
+\left.\frac{d\Psi}{dR}\right|_{R=0}=0,
+\qquad
+\Psi(1)=\Psi_s.
+$$
+
+The dimensionless viscoelectric correction to the viscosity is represented by
+
+$$
+M(R)
+=
+\exp\!\left[
+\omega
+\left(
+\frac{d\Psi}{dR}
+\right)^2
+\right].
+$$
+
+Once the electrostatic potential is known, the function $F(R)$ governing the axial velocity field satisfies
+
+$$
+0=
+-\Pi_D
++
+\frac{1}{R}
+\frac{d}{dR}
+\left[
+M(R)R\frac{dF}{dR}
+\right]
+-
+\Lambda\delta^2
+\sinh\!\left(\Psi(R)\right)\Omega,
+$$
+
+where
+
+$$
+\Pi_D=\alpha\xi^2,
+$$
+
+and the electrohydrodynamic coupling quantity $\Omega$ is defined through the integral relation
+
+$$
+\Omega
+=
+\int_0^1
+F(R)\sinh\!\left(\Psi(R)\right)R\,dR.
+$$
+
+The corresponding boundary conditions for $F(R)$ are
+
+$$
+\left.\frac{dF}{dR}\right|_{R=0}=0,
+\qquad
+F(1)=0.
+$$
