@@ -134,37 +134,28 @@ wallResidual[psi0_?NumericQ] :=
        Psi(R) =PsiS I0(delta R)/I0(delta).
    Hence
        Psi(0) = PsiS/I0(delta).
-
    This is used ONLY as an initial numerical estimate.
 *)
 
 psi0Guess =
   PsiSPB/BesselI[0, deltaPB];
 
-
 (* ========================================================= *)
 (* 7. DETERMINE THE CENTER POTENTIAL                         *)
 (* ========================================================= *)
 
 ClearAll[psi0];
-
 centerPotential =
   psi0 /. FindRoot[
-
     wallResidual[psi0] == 0,
-
     {
       psi0,
       (9/10)*psi0Guess,
       (11/10)*psi0Guess
     },
-
     WorkingPrecision -> wpPB,
-
     AccuracyGoal -> 20,
-
     PrecisionGoal -> 20,
-
     MaxIterations -> 100
   ];
 
@@ -175,11 +166,8 @@ centerPotential =
 
 pbSolution =
   pbForCenter[centerPotential];
-
 PsiFunction = pbSolution[[1]];
-
 pFunction = pbSolution[[2]];
-
 
 (* ========================================================= *)
 (* 9. FUNCTIONS INCLUDING THE AXIS R = 0                     *)
@@ -187,34 +175,24 @@ pFunction = pbSolution[[2]];
 
 ClearAll[PsiPB, PsiPrimePB, pPB];
 
-
 (* Dimensionless electrostatic potential *)
-
 PsiPB[Rin_?NumericQ] :=
   Which[
-
     Rin == 0,
     centerPotential,
-
     0 < Rin <= 1,
     PsiFunction[Rin],
-
     True,
     Indeterminate
   ];
-
-
 (* Auxiliary variable p(R) = R Psi'(R) *)
 
 pPB[Rin_?NumericQ] :=
   Which[
-
     Rin == 0,
     0,
-
     0 < Rin <= 1,
     pFunction[Rin],
-
     True,
     Indeterminate
   ];
@@ -224,15 +202,9 @@ pPB[Rin_?NumericQ] :=
 
 PsiPrimePB[Rin_?NumericQ] :=
   Which[
-
-    Rin == 0,
-    0,
-
+    Rin == 0,0,
     0 < Rin <= 1,
     pFunction[Rin]/Rin,
-
     True,
     Indeterminate
   ];
-
-
