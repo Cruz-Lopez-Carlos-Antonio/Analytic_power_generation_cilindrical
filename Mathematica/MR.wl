@@ -26,7 +26,7 @@ moduleDirectory = DirectoryName[$InputFileName];
 
 Get[
   FileNameJoin[
-    {moduleDirectory, "PoissonBoltzman.wl"}
+    {moduleDirectory, "PoissonBoltzmann.wl"}
   ]
 ];
 
