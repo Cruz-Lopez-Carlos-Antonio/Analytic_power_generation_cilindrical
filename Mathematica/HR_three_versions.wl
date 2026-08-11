@@ -29,7 +29,7 @@ Get[
   FileNameJoin[
     {
       moduleDirectory,
-      "PoissonBoltzman.wl"
+      "PoissonBoltzmann.wl"
     }
   ]
 ];
