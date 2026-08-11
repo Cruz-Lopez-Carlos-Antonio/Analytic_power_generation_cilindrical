@@ -180,31 +180,45 @@ PsiPB[Rin_?NumericQ] :=
   Which[
     Rin == 0,
     centerPotential,
-    0 < Rin <= 1,
+    
+    0 < Rin < epsPB,
+    centerPotential + (deltaPB^2 * Sinh[centerPotential] / 4) * Rin^2,
+    
+    epsPB <= Rin <= 1,
     PsiFunction[Rin],
+    
     True,
     Indeterminate
   ];
-(* Auxiliary variable p(R) = R Psi'(R) *)
 
+(* Auxiliary variable p(R) = R Psi'(R) *)
 pPB[Rin_?NumericQ] :=
   Which[
     Rin == 0,
     0,
-    0 < Rin <= 1,
+    
+    0 < Rin < epsPB,
+    (deltaPB^2 * Sinh[centerPotential] / 2) * Rin^2,
+    
+    epsPB <= Rin <= 1,
     pFunction[Rin],
+    
     True,
     Indeterminate
   ];
 
-
 (* Radial derivative of the potential *)
-
 PsiPrimePB[Rin_?NumericQ] :=
   Which[
-    Rin == 0,0,
-    0 < Rin <= 1,
+    Rin == 0,
+    0,
+    
+    0 < Rin < epsPB,
+    (deltaPB^2 * Sinh[centerPotential] / 2) * Rin,
+    
+    epsPB <= Rin <= 1,
     pFunction[Rin]/Rin,
+    
     True,
     Indeterminate
   ];
