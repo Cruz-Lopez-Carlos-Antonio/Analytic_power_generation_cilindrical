@@ -48,8 +48,8 @@ Get[
    higher working precision.
 *)
 
-wpPB = 30;
-wpExt = 40;  (* Extended precision used to absorb numerical precision loss *)
+wpPB = 40;
+wpExt = 50;  (* Extended precision used to absorb numerical precision loss *)
 
 deltaPB = SetPrecision[delta, wpExt];
 PsiSPB  = SetPrecision[PsiS, wpExt];
@@ -104,8 +104,8 @@ pbForCenter[psi0_?NumericQ] :=
       {psi, p},
       {R, epsPB, 1},
       WorkingPrecision -> wpPB,
-      AccuracyGoal -> 18,
-      PrecisionGoal -> 18,
+      AccuracyGoal -> 25,
+      PrecisionGoal -> 25,
       MaxSteps -> Infinity
     ]
   ];
@@ -154,8 +154,8 @@ centerPotential =
       (11/10)*psi0Guess
     },
     WorkingPrecision -> wpPB,
-    AccuracyGoal -> 20,
-    PrecisionGoal -> 20,
+    AccuracyGoal -> 25,
+    PrecisionGoal -> 25,
     MaxIterations -> 100
   ];
 
@@ -197,7 +197,7 @@ pPB[Rin_?NumericQ] :=
     Rin == 0,
     0,
     
-    0 < Rin < epsPB,https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/PoissonBoltzmann.wl
+    0 < Rin < epsPB,
     (deltaPB^2 * Sinh[centerPotential] / 2) * Rin^2,
     
     epsPB <= Rin <= 1,
