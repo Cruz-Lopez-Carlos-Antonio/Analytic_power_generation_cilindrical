@@ -197,7 +197,7 @@ pPB[Rin_?NumericQ] :=
     Rin == 0,
     0,
     
-    0 < Rin < epsPB,
+    0 < Rin < epsPB,https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/PoissonBoltzmann.wl
     (deltaPB^2 * Sinh[centerPotential] / 2) * Rin^2,
     
     epsPB <= Rin <= 1,
