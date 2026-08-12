@@ -48,8 +48,8 @@ Get[
    higher working precision.
 *)
 
-wpPB = 40;
-wpExt = 50;  (* Extended precision used to absorb numerical precision loss *)
+wpPB = 30;
+wpExt = 40;  (* Extended precision used to absorb numerical precision loss *)
 
 deltaPB = SetPrecision[delta, wpExt];
 PsiSPB  = SetPrecision[PsiS, wpExt];
