@@ -154,8 +154,8 @@ centerPotential =
       (11/10)*psi0Guess
     },
     WorkingPrecision -> wpPB,
-    AccuracyGoal -> 25,
-    PrecisionGoal -> 25,
+    AccuracyGoal -> 20,
+    PrecisionGoal -> 20,
     MaxIterations -> 100
   ];
 
