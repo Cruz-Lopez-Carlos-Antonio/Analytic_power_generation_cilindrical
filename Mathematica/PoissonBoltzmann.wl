@@ -104,8 +104,8 @@ pbForCenter[psi0_?NumericQ] :=
       {psi, p},
       {R, epsPB, 1},
       WorkingPrecision -> wpPB,
-      AccuracyGoal -> 25,
-      PrecisionGoal -> 25,
+      AccuracyGoal -> 18,
+      PrecisionGoal -> 18,
       MaxSteps -> Infinity
     ]
   ];
