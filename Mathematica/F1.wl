@@ -15,8 +15,8 @@ Get[FileNameJoin[{baseDir, "Lambda_parameter.wl"}]];
 (* ------------------------------------------------------------ *)
 
 wpF1 = 30;
-agF1 = 15;
-pgF1 = 15;
+agF1 = 14;
+pgF1 = 14;
 
 epsQ = 10^-8;
 
