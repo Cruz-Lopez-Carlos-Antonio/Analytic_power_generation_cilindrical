@@ -94,6 +94,8 @@ F1[Rin_?NumericQ] := Which[
 (* Public derivative                                            *)
 (* ------------------------------------------------------------ *)
 
+ClearAll[F1Prime];
+
 F1Prime[Rin_?NumericQ] := Which[
     0 <= Rin <= 1,
         Lambda delta^2 QF1[Rin],
