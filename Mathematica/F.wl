@@ -28,11 +28,9 @@ FPrime[R_?NumericQ] := Module[{value},
     Return[$Failed];
   ];
 
-  value =
-    F0Prime[R]
-    + Omega Lambda delta^2 QF1[R];
+  value = F0Prime[R] + Omega F1Prime[R];
 
-  If[R == 0, 0, value]
+  value
 ];
 
 FPrime::domain =
