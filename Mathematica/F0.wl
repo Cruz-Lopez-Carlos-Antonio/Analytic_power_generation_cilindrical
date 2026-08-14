@@ -75,9 +75,7 @@ F0[Rin_?NumericQ] := Which[
 F0Prime[Rin_?NumericQ] := Which[
     0 <= Rin <= 1,
         PiD Rin / (2 MR[Rin]),
-    True,
-        Indeterminate
-];
+
     True,
         Indeterminate
 ];
