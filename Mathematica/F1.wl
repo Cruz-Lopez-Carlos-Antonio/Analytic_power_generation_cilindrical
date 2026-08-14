@@ -78,12 +78,26 @@ f1Sol = NDSolveValue[
 
 
 (* ------------------------------------------------------------ *)
+(* Public function                                              *)
+(* ------------------------------------------------------------ *)
+
+F1[Rin_?NumericQ] := Which[
+    0 <= Rin <= 1,
+        f1Sol[Rin],
+
+    True,
+        Indeterminate
+];
+
+
+(* ------------------------------------------------------------ *)
 (* Public derivative                                            *)
 (* ------------------------------------------------------------ *)
 
 F1Prime[Rin_?NumericQ] := Which[
     0 <= Rin <= 1,
         Lambda delta^2 QF1[Rin],
+
     True,
         Indeterminate
 ];
