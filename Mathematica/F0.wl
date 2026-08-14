@@ -72,6 +72,8 @@ F0[Rin_?NumericQ] := Which[
 (* OPTIONAL PUBLIC DERIVATIVE                                   *)
 (* ============================================================ *)
 
+ClearAll[F0Prime];
+
 F0Prime[Rin_?NumericQ] := Which[
     0 <= Rin <= 1,
         PiD Rin / (2 MR[Rin]),
