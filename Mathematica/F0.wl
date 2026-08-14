@@ -72,12 +72,12 @@ F0[Rin_?NumericQ] := Which[
 (* OPTIONAL PUBLIC DERIVATIVE                                   *)
 (* ============================================================ *)
 
-f0Prime = Derivative[1][f0Sol];
-
 F0Prime[Rin_?NumericQ] := Which[
     0 <= Rin <= 1,
-        f0Prime[Rin],
-
+        PiD Rin / (2 MR[Rin]),
+    True,
+        Indeterminate
+];
     True,
         Indeterminate
 ];
