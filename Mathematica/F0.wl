@@ -3,18 +3,16 @@
 (* Operational implementation of F0(R)                          *)
 (* ============================================================ *)
 
-baseDir = DirectoryName[$InputFileName];
-
-Get[FileNameJoin[{baseDir, "Parameters.wl"}]];
-Get[FileNameJoin[{baseDir, "MR.wl"}]];
-
+Module[{localDir = DirectoryName[$InputFileName]},
+  Get[FileNameJoin[{localDir, "Parameters.wl"}]];
+  Get[FileNameJoin[{localDir, "MR.wl"}]];
+];
 
 (* ============================================================ *)
 (* PARAMETER                                                    *)
 (* ============================================================ *)
 
 PiD = alpha xi^2;
-
 
 (* ============================================================ *)
 (* NUMERICAL SETTINGS                                           *)
@@ -24,12 +22,8 @@ wpF0 = 30;
 agF0 = 14;
 pgF0 = 14;
 
-
 (* ============================================================ *)
 (* AUXILIARY ODE                                                *)
-(*                                                              *)
-(* F0'(R) = PiD R/(2 M(R))                                      *)
-(* F0(1)  = 0                                                   *)
 (* ============================================================ *)
 
 ClearAll[f0, f0Sol, F0];
@@ -41,11 +35,9 @@ f0Sol = NDSolveValue[
     },
     f0,
     {R, 0, 1},
-
     WorkingPrecision -> wpF0,
     AccuracyGoal -> agF0,
     PrecisionGoal -> pgF0,
-
     Method -> {
         "TimeIntegration" -> {
             "ExplicitRungeKutta",
@@ -54,30 +46,22 @@ f0Sol = NDSolveValue[
     }
 ];
 
-
 (* ============================================================ *)
 (* PUBLIC FUNCTION                                              *)
 (* ============================================================ *)
 
 F0[Rin_?NumericQ] := Which[
-    0 <= Rin <= 1,
-        f0Sol[Rin],
-
-    True,
-        Indeterminate
+    0 <= Rin <= 1, f0Sol[Rin],
+    True, Indeterminate
 ];
 
-
 (* ============================================================ *)
-(* OPTIONAL PUBLIC DERIVATIVE                                   *)
+(* PUBLIC DERIVATIVE (OPERATIVA EXACTA)                         *)
 (* ============================================================ *)
 
 ClearAll[F0Prime];
 
 F0Prime[Rin_?NumericQ] := Which[
-    0 <= Rin <= 1,
-        PiD Rin / (2 MR[Rin]),
-
-    True,
-        Indeterminate
+    0 <= Rin <= 1, PiD Rin / (2 MR[Rin]),
+    True, Indeterminate
 ];
