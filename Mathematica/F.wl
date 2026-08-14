@@ -30,7 +30,7 @@ FPrime[R_?NumericQ] := Module[{value},
 
   value = F0Prime[R] + Omega F1Prime[R];
 
-  value
+  If[R == 0, 0, value]
 ];
 
 FPrime::domain =
