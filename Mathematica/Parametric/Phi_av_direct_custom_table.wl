@@ -128,11 +128,7 @@ Print["Hipatia direct-solver modules loaded correctly."];
 (* ============================================================ *)
 (* Edit these values only.                                      *)
 
-deltaValues = {
-   1,
-   2,
-   3
-};
+deltaValues =  Range[10];
 
 
 psiSValues = {
