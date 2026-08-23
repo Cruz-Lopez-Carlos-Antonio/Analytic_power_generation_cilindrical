@@ -1,24 +1,55 @@
 (* ============================================================ *)
-(* Phi_av_custom_table.txt                                      *)
+(* Phi_av_custom_table_corrected.wl                              *)
+(* Robust custom table for autonomous PhiAvParametric            *)
 (* ============================================================ *)
-(* Place this file in the SAME folder as Phi_av_parametric.wl   *)
-(* and its dependent parametric modules.                        *)
-(* Run with Get["...\\Phi_av_custom_table.txt"].               *)
-(* Edit only deltaValues and psiSValues below.                  *)
+(*
+   IMPORTANT CORRECTION
+
+   The previous version used:
+
+       Quiet[Check[PhiAvParametric[d, ps], $Failed]]
+
+   In Mathematica, Check returns its failure expression when ANY
+   message is generated during the evaluation, even if the solver
+   successfully returns a perfectly usable numerical result.
+
+   Therefore benign numerical warnings from NIntegrate could be
+   converted artificially into Missing["Failed"].
+
+   This version:
+      1. evaluates PhiAvParametric under Quiet;
+      2. DOES NOT use Check to classify warnings as failures;
+      3. accepts the result only if it is an Association containing
+         a numerical "PhiAv" value;
+      4. otherwise stores Missing["Failed"].
+*)
 (* ============================================================ *)
 
 baseDir = DirectoryName[$InputFileName];
 
-If[baseDir === "",
-   Print["ERROR: Run this file with Get[\"full_path\\Phi_av_custom_table.txt\"]."];
+If[
+   baseDir === "",
+   Print[
+      "ERROR: Run this file with Get[\"full_path\\Phi_av_custom_table_corrected.wl\"]."
+   ];
    Abort[];
 ];
 
-Get[FileNameJoin[{baseDir, "Phi_av_parametric.wl"}]];
+Get[
+   FileNameJoin[
+      {
+         baseDir,
+         "Phi_av_parametric.wl"
+      }
+   ]
+];
 
-(* ================= USER INPUT ================= *)
 
-deltaValues =Range[10]
+(* ============================================================ *)
+(* USER INPUT                                                    *)
+(* ============================================================ *)
+
+deltaValues = Range[30];
 
 psiSValues = {
    -13/10,
@@ -33,68 +64,147 @@ psiSValues = {
    -1/2
 };
 
-(* ============================================== *)
+
+(* ============================================================ *)
+(* INFORMATION                                                   *)
+(* ============================================================ *)
 
 Print[""];
 Print["CUSTOM Phi_av PARAMETRIC TABLE"];
 Print["delta values = ", deltaValues];
 Print["PsiS values  = ", N[psiSValues, 8]];
-Print["Total calculations = ", Length[deltaValues] Length[psiSValues]];
+Print[
+   "Total calculations = ",
+   Length[deltaValues] Length[psiSValues]
+];
 Print[""];
+
+
+(* ============================================================ *)
+(* COMPUTE MATRIX                                                *)
+(* ============================================================ *)
 
 phiAvMatrix =
    Table[
-      Print["delta = ", d, "   PsiS = ", N[ps, 8]];
 
-      result = Quiet[
-         Check[
-            PhiAvParametric[d, ps],
-            $Failed
-         ]
+      Print[
+         "delta = ",
+         d,
+         "   PsiS = ",
+         N[ps, 8]
       ];
 
+
+      result =
+         Quiet[
+            PhiAvParametric[
+               d,
+               ps
+            ]
+         ];
+
+
       If[
-         result === $Failed,
-         Missing["Failed"],
-         result["PhiAv"]
+         AssociationQ[result] &&
+         KeyExistsQ[result, "PhiAv"] &&
+         NumericQ[result["PhiAv"]],
+
+         result["PhiAv"],
+
+         Missing["Failed"]
       ],
 
       {d, deltaValues},
       {ps, psiSValues}
    ];
 
-phiAvMatrixNumeric = N[phiAvMatrix, 12];
+
+phiAvMatrixNumeric =
+   N[
+      phiAvMatrix,
+      12
+   ];
+
+
+(* ============================================================ *)
+(* HEADERS                                                       *)
+(* ============================================================ *)
 
 headers =
    Prepend[
-      ("PsiS=" <> ToString[NumberForm[N[#, 8], {10, 5}], InputForm]) & /@ psiSValues,
+      (
+         "PsiS=" <>
+         ToString[
+            NumberForm[
+               N[#, 8],
+               {10, 5}
+            ],
+            StandardForm
+         ]
+      ) & /@ psiSValues,
       "delta"
    ];
+
+
+(* ============================================================ *)
+(* COMPLETE NUMERICAL TABLE                                      *)
+(* ============================================================ *)
 
 tableRows =
    MapThread[
       Prepend,
-      {phiAvMatrixNumeric, deltaValues}
+      {
+         phiAvMatrixNumeric,
+         deltaValues
+      }
    ];
 
-completeTable = Prepend[tableRows, headers];
+
+completeTable =
+   Prepend[
+      tableRows,
+      headers
+   ];
+
+
+(* ============================================================ *)
+(* FORMATTED TABLE FOR NOTEBOOK                                  *)
+(* ============================================================ *)
 
 displayMatrix =
    Map[
-      If[NumericQ[#], NumberForm[#, {14, 8}], #] &,
+      If[
+         NumericQ[#],
+         NumberForm[
+            #,
+            {14, 8}
+         ],
+         #
+      ] &,
       phiAvMatrixNumeric,
       {2}
    ];
 
+
 displayRows =
    MapThread[
       Prepend,
-      {displayMatrix, deltaValues}
+      {
+         displayMatrix,
+         deltaValues
+      }
    ];
 
-displayTable = Prepend[displayRows, headers];
+
+displayTable =
+   Prepend[
+      displayRows,
+      headers
+   ];
+
 
 Print[""];
+
 Print[
    Grid[
       displayTable,
@@ -104,7 +214,19 @@ Print[
    ]
 ];
 
-outputFile = FileNameJoin[{baseDir, "Phi_av_table.txt"}];
+
+(* ============================================================ *)
+(* EXPORT                                                        *)
+(* ============================================================ *)
+
+outputFile =
+   FileNameJoin[
+      {
+         baseDir,
+         "Phi_av_table.txt"
+      }
+   ];
+
 
 Export[
    outputFile,
@@ -112,10 +234,45 @@ Export[
    "Table"
 ];
 
+
+(* ============================================================ *)
+(* SUMMARY                                                       *)
+(* ============================================================ *)
+
+failedPoints =
+   Flatten[
+      Table[
+         If[
+            MissingQ[phiAvMatrix[[i, j]]],
+            {
+               deltaValues[[i]],
+               psiSValues[[j]]
+            },
+            Nothing
+         ],
+         {i, Length[deltaValues]},
+         {j, Length[psiSValues]}
+      ],
+      1
+   ];
+
+
 Print[""];
 Print["Calculations finished."];
 Print["TXT table exported to:"];
 Print[outputFile];
+
+Print[""];
+
+If[
+   failedPoints === {},
+   Print["No failed points were detected."],
+   Print[
+      "Failed points = ",
+      failedPoints
+   ]
+];
+
 Print[""];
 Print["Raw matrix:       phiAvMatrix"];
 Print["Numerical matrix: phiAvMatrixNumeric"];
