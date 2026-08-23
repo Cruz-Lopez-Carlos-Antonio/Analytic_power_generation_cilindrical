@@ -52,7 +52,7 @@ omegaIntegrandB[R_?NumericQ] :=
 
 AOmega = NIntegrate[
     omegaIntegrandA[R],
-    {R, 0, 1},
+    {R, 0, 1 - 1/delta, 1}, (* <-- División explícita en la capa límite física *)
 
     WorkingPrecision -> omegaWorkingPrecision,
     AccuracyGoal -> omegaAccuracyGoal,
@@ -67,7 +67,7 @@ AOmega = NIntegrate[
 
 BOmega = NIntegrate[
     omegaIntegrandB[R],
-    {R, 0, 1},
+    {R, 0, 1 - 1/delta, 1}, (* <-- División explícita en la capa límite física *)
 
     WorkingPrecision -> omegaWorkingPrecision,
     AccuracyGoal -> omegaAccuracyGoal,
@@ -83,7 +83,7 @@ BOmega = NIntegrate[
 
 (* ============================================================ *)
 (* OMEGA                                                        *)
-(*                                                               *)
+(*                                                              *)
 (* Omega = A/(1-B)                                              *)
 (* ============================================================ *)
 
