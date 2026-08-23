@@ -1,5 +1,5 @@
 (* ============================================================ *)
-(* Phi_av_direct_custom_table.txt                               *)
+(* Phi_av_direct_custom_table_corrected.wl                               *)
 (* Custom Phi_av table using Hipatia's direct parametric solver *)
 (* ============================================================ *)
 (*
@@ -11,7 +11,7 @@
        Direct_solver_parametric.wl
 
    It is intentionally separate from the semianalytical
-   Phi_av_custom_table.txt workflow.
+   Phi_av_custom_table.wl workflow.
 
    HOW TO USE
 
@@ -32,7 +32,7 @@
 
    3. Run, for example:
 
-          Get["C:\\Users\\AMD RYZEN 7\\Downloads\\Phi_av_direct_custom_table.txt"]
+          Get["C:\\Users\\AMD RYZEN 7\\Downloads\\Phi_av_direct_custom_table_corrected.wl"]
 
    4. The routine:
         - evaluates every requested pair (delta, PsiS),
@@ -41,6 +41,18 @@
 
    The structure follows the dependencies used in Hipatia's
    Table_1_final.txt.
+*)
+(* ============================================================ *)
+(*
+   IMPORTANT:
+   This corrected version does NOT wrap DirectSolverParametric in
+   Check[..., $Failed].  Check treats any emitted Mathematica
+   message as a failure, even when the direct solver ultimately
+   returns a valid numerical Association.
+
+   Numerical warnings are therefore silenced for table production,
+   but a point is marked Missing["Failed"] only when the returned
+   object is not a valid Association containing a numerical PhiAv.
 *)
 (* ============================================================ *)
 
@@ -54,7 +66,7 @@ baseDir = DirectoryName[$InputFileName];
 If[
    baseDir === "",
    Print[
-      "ERROR: Run this file with Get[\"full_path\\Phi_av_direct_custom_table.txt\"]."
+      "ERROR: Run this file with Get[\"full_path\\Phi_av_direct_custom_table_corrected.wl\"]."
    ];
    Abort[];
 ];
@@ -192,23 +204,30 @@ phiAvDirectMatrix =
 
 
       currentDirectSolution =
-   Quiet[
-      DirectSolverParametric[
-         N[deltaValue, 15],
-         N[psiSValue, 15],
-         nGridTable
-      ]
+         Quiet[
+            DirectSolverParametric[
+               N[deltaValue, 15],
+               N[psiSValue, 15],
+               nGridTable
+            ]
+         ];
+
+
+      If[
+         AssociationQ[currentDirectSolution] &&
+         KeyExistsQ[currentDirectSolution, "PhiAv"] &&
+         NumericQ[currentDirectSolution["PhiAv"]],
+
+         currentDirectSolution["PhiAv"],
+
+         Missing["Failed"]
+      ],
+
+      {deltaValue, deltaValues},
+
+      {psiSValue, psiSValues}
    ];
 
-If[
-   AssociationQ[currentDirectSolution] &&
-   KeyExistsQ[currentDirectSolution, "PhiAv"] &&
-   NumericQ[currentDirectSolution["PhiAv"]],
-
-   currentDirectSolution["PhiAv"],
-
-   Missing["Failed"]
-]
 
 (* ============================================================ *)
 (* 6. NUMERICAL MATRIX                                          *)
@@ -234,7 +253,7 @@ headers =
                N[#, 8],
                {10, 5}
             ],
-            InputForm
+            StandardForm
          ]
       ) & /@ psiSValues,
       "delta"
@@ -331,7 +350,29 @@ Export[
 
 
 (* ============================================================ *)
-(* 11. FINAL MESSAGE                                            *)
+(* 11. GENUINELY FAILED POINTS                                  *)
+(* ============================================================ *)
+
+failedDirectPoints =
+   Flatten[
+      Table[
+         If[
+            MissingQ[phiAvDirectMatrix[[i, j]]],
+            {
+               deltaValues[[i]],
+               psiSValues[[j]]
+            },
+            Nothing
+         ],
+         {i, Length[deltaValues]},
+         {j, Length[psiSValues]}
+      ],
+      1
+   ];
+
+
+(* ============================================================ *)
+(* 12. FINAL MESSAGE                                            *)
 (* ============================================================ *)
 
 Print[""];
@@ -345,4 +386,15 @@ Print["Raw matrix:       phiAvDirectMatrix"];
 Print["Numerical matrix: phiAvDirectMatrixNumeric"];
 Print["Complete table:   completeDirectTable"];
 Print["Formatted table:  displayDirectTable"];
+Print[""];
+
+If[
+   failedDirectPoints === {},
+   Print["No genuine failed points were detected."],
+   Print[
+      "Genuine failed points = ",
+      failedDirectPoints
+   ]
+];
+
 Print["============================================================"];
