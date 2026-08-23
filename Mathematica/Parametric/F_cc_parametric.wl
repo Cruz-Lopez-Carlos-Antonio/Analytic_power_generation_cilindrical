@@ -21,8 +21,8 @@
 (* ========================================================= *)
 
 wpFccParam = 30;
-agFccParam = 14;
-pgFccParam = 14;
+agFccParam = 12; (* Tolerancia armonizada para ruido basal *)
+pgFccParam = 12; (* Tolerancia armonizada para ruido basal *)
 
 
 (* ========================================================= *)
@@ -35,11 +35,13 @@ ComputeFcc[pb_Association] :=
  Module[
   {
    psi,
+   deltaLoc,
    integrand,
    fccValue
    },
 
   psi = pb["Psi"];
+  deltaLoc = pb["Delta"]; (* Extracción dinámica del parámetro físico *)
 
 
   integrand[R_?NumericQ] :=
@@ -50,7 +52,7 @@ ComputeFcc[pb_Association] :=
    NIntegrate[
     integrand[R],
 
-    {R, 0, 1},
+    {R, 0, 1 - 1/deltaLoc, 1}, (* Mapeo explícito de la capa límite *)
 
     WorkingPrecision -> wpFccParam,
 
