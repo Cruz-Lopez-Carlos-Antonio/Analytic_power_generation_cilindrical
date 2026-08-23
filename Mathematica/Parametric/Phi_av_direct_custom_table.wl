@@ -192,31 +192,23 @@ phiAvDirectMatrix =
 
 
       currentDirectSolution =
-         Quiet[
-            Check[
-               DirectSolverParametric[
-                  N[deltaValue, 15],
-                  N[psiSValue, 15],
-                  nGridTable
-               ],
-               $Failed
-            ]
-         ];
-
-
-      If[
-         currentDirectSolution === $Failed,
-
-         Missing["Failed"],
-
-         currentDirectSolution["PhiAv"]
-      ],
-
-      {deltaValue, deltaValues},
-
-      {psiSValue, psiSValues}
+   Quiet[
+      DirectSolverParametric[
+         N[deltaValue, 15],
+         N[psiSValue, 15],
+         nGridTable
+      ]
    ];
 
+If[
+   AssociationQ[currentDirectSolution] &&
+   KeyExistsQ[currentDirectSolution, "PhiAv"] &&
+   NumericQ[currentDirectSolution["PhiAv"]],
+
+   currentDirectSolution["PhiAv"],
+
+   Missing["Failed"]
+]
 
 (* ============================================================ *)
 (* 6. NUMERICAL MATRIX                                          *)
