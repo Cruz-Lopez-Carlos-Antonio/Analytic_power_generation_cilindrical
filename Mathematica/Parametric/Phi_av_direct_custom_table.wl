@@ -1,6 +1,6 @@
 (* ============================================================ *)
 (* Phi_av_direct_custom_table.wl                                *)
-(* Robust table generator for Hipatia's direct solver           *)
+(* Robust table generator for the direct solver           *)
 (* ============================================================ *)
 (*
    PURPOSE
