@@ -102,7 +102,7 @@ Print["Hipatia direct-solver modules loaded correctly."];
 (* Edit only these three definitions.                           *)
 (* ============================================================ *)
 
-deltaValues = Range[10];
+deltaValues = Range[30];
 
 psiSValues = {
    -13/10,
@@ -146,10 +146,14 @@ Print[""];
 
 
 (* ============================================================ *)
-(* 5. SINGLE-POINT SAFE EVALUATOR                               *)
+(* 5. SINGLE-POINT EVALUATOR WITH MESSAGE REPORT                *)
 (* ============================================================ *)
 
 ClearAll[DirectPhiAvValue];
+
+warningDirectPoints = {};
+failedDirectPointsDuringRun = {};
+
 
 DirectPhiAvValue[
    deltaValue_?NumericQ,
@@ -158,40 +162,97 @@ DirectPhiAvValue[
  Module[
    {
       sol,
-      value
+      value,
+      messagesBefore,
+      messagesAfter,
+      messages
    },
 
+   (* Snapshot of the message list BEFORE this point *)
+   messagesBefore = $MessageList;
+
+
+   (* No Quiet and no Check:
+      Mathematica displays all messages normally. *)
    sol =
-      Quiet[
-         DirectSolverParametric[
-            N[deltaValue, 15],
-            N[psiSValue, 15],
-            nGridTable
-         ]
+      DirectSolverParametric[
+         N[deltaValue, 15],
+         N[psiSValue, 15],
+         nGridTable
       ];
 
+
+   (* Snapshot AFTER this point *)
+   messagesAfter = $MessageList;
+
+
+   (* Keep only messages generated during THIS evaluation *)
+   messages =
+      Drop[
+         messagesAfter,
+         Length[messagesBefore]
+      ];
+
+
+   (* Record the point if any message was generated *)
    If[
-      AssociationQ[sol],
+      messages =!= {},
 
-      value =
-         Lookup[
-            sol,
-            "PhiAv",
-            Missing["NoPhiAv"]
-         ],
+      AppendTo[
+         warningDirectPoints,
 
-      Return[
-         Missing["Failed"]
-      ]
+         <|
+            "Delta" -> deltaValue,
+            "PsiS" -> psiSValue,
+            "Messages" -> messages
+         |>
+      ];
    ];
 
-   If[
-      NumericQ[value],
-      value,
-      Missing["Failed"]
-   ]
-];
 
+   (* A message does NOT automatically imply failure *)
+   If[
+      ! AssociationQ[sol],
+
+      AppendTo[
+         failedDirectPointsDuringRun,
+         {
+            deltaValue,
+            psiSValue,
+            "NoAssociation"
+         }
+      ];
+
+      Return[Missing["Failed"]];
+   ];
+
+
+   value =
+      Lookup[
+         sol,
+         "PhiAv",
+         Missing["NoPhiAv"]
+      ];
+
+
+   If[
+      ! NumericQ[value],
+
+      AppendTo[
+         failedDirectPointsDuringRun,
+         {
+            deltaValue,
+            psiSValue,
+            "NonNumericPhiAv"
+         }
+      ];
+
+      Return[Missing["Failed"]];
+   ];
+
+
+   value
+];
 
 (* ============================================================ *)
 (* 6. COMPUTE Phi_av MATRIX                                     *)
@@ -200,8 +261,9 @@ DirectPhiAvValue[
 phiAvDirectMatrix =
    Table[
 
+      Print[""];
       Print[
-         "delta = ",
+         ">>> delta = ",
          deltaValue,
          "   PsiS = ",
          N[psiSValue, 8]
@@ -215,7 +277,6 @@ phiAvDirectMatrix =
       {deltaValue, deltaValues},
       {psiSValue, psiSValues}
    ];
-
 
 (* ============================================================ *)
 (* 7. NUMERICAL MATRIX                                          *)
@@ -343,6 +404,95 @@ failedDirectPoints =
       ],
       1
    ];
+
+(* ============================================================ *)
+(* 11B. WARNING REPORT                                          *)
+(* ============================================================ *)
+
+Print[""];
+Print["============================================================"];
+Print["                    WARNING REPORT"];
+Print["============================================================"];
+Print[""];
+
+
+If[
+   warningDirectPoints === {},
+
+   Print[
+      "No warnings were generated during the complete table."
+   ],
+
+   Print[
+      "Number of points that generated warnings = ",
+      Length[warningDirectPoints]
+   ];
+
+   Print[""];
+
+   warningSummary =
+      Map[
+         Function[
+            item,
+
+            {
+               item["Delta"],
+               N[item["PsiS"], 8],
+               Length[item["Messages"]],
+               item["Messages"]
+            }
+         ],
+         warningDirectPoints
+      ];
+
+
+   Print[
+      Grid[
+         Prepend[
+            warningSummary,
+            {
+               "delta",
+               "PsiS",
+               "Number of messages",
+               "Messages"
+            }
+         ],
+         Frame -> All,
+         Alignment -> Left
+      ]
+   ];
+];
+
+
+Print[""];
+Print["------------------------------------------------------------"];
+Print["                    FAILURE REPORT"];
+Print["------------------------------------------------------------"];
+Print[""];
+
+
+If[
+   failedDirectPointsDuringRun === {},
+
+   Print[
+      "No genuine solver failures were detected."
+   ],
+
+   Print[
+      Grid[
+         Prepend[
+            failedDirectPointsDuringRun,
+            {
+               "delta",
+               "PsiS",
+               "Failure type"
+            }
+         ],
+         Frame -> All,
+         Alignment -> Center
+      ]
+   ];
+];
 
 
 (* ============================================================ *)
