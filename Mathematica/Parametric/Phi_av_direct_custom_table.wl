@@ -94,7 +94,7 @@ Get[
 
 
 Print[""];
-Print["Hipatia direct-solver modules loaded correctly."];
+Print["Direct-solver modules loaded correctly."];
 
 
 (* ============================================================ *)
