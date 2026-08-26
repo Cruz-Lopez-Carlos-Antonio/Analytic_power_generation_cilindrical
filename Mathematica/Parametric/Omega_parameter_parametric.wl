@@ -33,7 +33,7 @@ SolveOmegaParametric[
   omegaWorkingPrecisionParametric = 30;
   omegaAccuracyGoalParametric = 12;
   omegaPrecisionGoalParametric = 12;
-  omegaPrecisionGoalInnerParametric = 4; (* <-- Magia analítica: tolerancia relajada en zona plana *)
+  omegaPrecisionGoalInnerParametric = 4; 
   omegaMaxRecursionParametric = 30;
 
   ClearAll[
