@@ -1,4 +1,11 @@
 (* ============================================================ *)
+(* Code developed by Sánchez Lozano, G., Cruz-López C.-A., and  *)
+(* F. Méndez, for the research:                                 *)
+(* "Power generation in cylindrical microchannels with high     *)
+(* surface zeta potential: a survey on viscoelectric effects    *)
+(* over streaming potentials and efficiency"                    *)
+(* Year: 2026                                                   *)
+(* ------------------------------------------------------------ *)
 (* GeneratePhiAvParametricStudy.wl                              *)
 (* General generator of Phi_av(delta) parametric studies        *)
 (* ============================================================ *)
@@ -127,7 +134,7 @@ evaluatePhiAvStudyPoint[d_, parameterName_String, parameterValue_] :=
    ]
  ];
 
-(* MAGIA MINIMALISTA: Etiquetas limpias sin NumberForm *)
+(* Clean labels without NumberForm *)
 parameterLabel[parameterName_String, value_] :=
    parameterName <> "=" <> ToString[N[value]];
 
