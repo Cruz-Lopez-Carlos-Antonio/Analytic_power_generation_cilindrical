@@ -1,6 +1,13 @@
-(* ========================================================= *)
-(* HR_parametric.wl                                          *)
-(* ========================================================= *)
+(* ============================================================ *)
+(* Code developed by Sánchez Lozano, G., Cruz-López C.-A., and  *)
+(* F. Méndez, for the research:                                 *)
+(* "Power generation in cylindrical microchannels with high     *)
+(* surface zeta potential: a survey on viscoelectric effects    *)
+(* over streaming potentials and efficiency"                    *)
+(* Year: 2026                                                   *)
+(* ------------------------------------------------------------ *)
+(* HR_parametric.wl                                             *)
+(* ============================================================ *)
 (*
    Parametric version of the validated HR.wl module.
 
