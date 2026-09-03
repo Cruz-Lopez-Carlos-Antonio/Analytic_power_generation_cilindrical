@@ -1,4 +1,11 @@
 (* ============================================================ *)
+(* Code developed by Sánchez Lozano, G., Cruz-López C.-A., and  *)
+(* F. Méndez, for the research:                                 *)
+(* "Power generation in cylindrical microchannels with high     *)
+(* surface zeta potential: a survey on viscoelectric effects    *)
+(* over streaming potentials and efficiency"                    *)
+(* Year: 2026                                                   *)
+(* ------------------------------------------------------------ *)
 (* Omega_parameter_parametric.wl                                *)
 (* Parametric operational module for A, B and Omega             *)
 (* ============================================================ *)
@@ -33,7 +40,7 @@ SolveOmegaParametric[
   omegaWorkingPrecisionParametric = 30;
   omegaAccuracyGoalParametric = 12;
   omegaPrecisionGoalParametric = 12;
-  omegaPrecisionGoalInnerParametric = 4; 
+  omegaPrecisionGoalInnerParametric = 4; (* Analytical strategy: relaxed tolerance in the flat region *)
   omegaMaxRecursionParametric = 30;
 
   ClearAll[
@@ -53,7 +60,7 @@ SolveOmegaParametric[
    rangeInner = {R, 0, rSplit};
    rangeOuter = {R, rSplit, 1};
 
-   (* Evaluaciones explícitas particionadas *)
+   (* Explicit partitioned evaluations *)
    AParametric =
     NIntegrate[omegaIntegrandAParametric[R], Evaluate[rangeInner],
      WorkingPrecision -> omegaWorkingPrecisionParametric, AccuracyGoal -> omegaAccuracyGoalParametric,
@@ -74,7 +81,7 @@ SolveOmegaParametric[
      PrecisionGoal -> omegaPrecisionGoalParametric, MaxRecursion -> omegaMaxRecursionParametric,
      Method -> {"GlobalAdaptive", "SymbolicProcessing" -> 0}];
    ,
-   (* Si delta <= 1, la curva es suave en todo el dominio *)
+   (* If delta <= 1, the curve is smooth over the entire domain *)
    rSplit = None;
    rangeFull = {R, 0, 1};
 
