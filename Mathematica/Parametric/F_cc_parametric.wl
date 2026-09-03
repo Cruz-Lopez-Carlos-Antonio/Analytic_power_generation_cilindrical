@@ -1,6 +1,13 @@
-(* ========================================================= *)
-(* F_cc_parametric.wl                                        *)
-(* ========================================================= *)
+(* ============================================================ *)
+(* Code developed by Sánchez Lozano, G., Cruz-López C.-A., and  *)
+(* F. Méndez, for the research:                                 *)
+(* "Power generation in cylindrical microchannels with high     *)
+(* surface zeta potential: a survey on viscoelectric effects    *)
+(* over streaming potentials and efficiency"                    *)
+(* Year: 2026                                                   *)
+(* ------------------------------------------------------------ *)
+(* F_cc_parametric.wl                                           *)
+(* ============================================================ *)
 (*
    Parametric computation of
 
@@ -21,8 +28,8 @@
 (* ========================================================= *)
 
 wpFccParam = 30;
-agFccParam = 12; (* Tolerancia armonizada para ruido basal *)
-pgFccParam = 12; (* Tolerancia armonizada para ruido basal *)
+agFccParam = 12; (* Harmonized tolerance for baseline noise *)
+pgFccParam = 12; (* Harmonized tolerance for baseline noise *)
 
 
 (* ========================================================= *)
@@ -41,7 +48,7 @@ ComputeFcc[pb_Association] :=
    },
 
   psi = pb["Psi"];
-  deltaLoc = pb["Delta"]; (* Extracción dinámica del parámetro físico *)
+  deltaLoc = pb["Delta"]; (* Dynamic extraction of the physical parameter *)
 
 
   integrand[R_?NumericQ] :=
@@ -52,7 +59,7 @@ ComputeFcc[pb_Association] :=
    NIntegrate[
     integrand[R],
 
-    {R, 0, 1 - 1/deltaLoc, 1}, (* Mapeo explícito de la capa límite *)
+    {R, 0, 1 - 1/deltaLoc, 1}, (* Explicit mapping of the boundary layer *)
 
     WorkingPrecision -> wpFccParam,
 
