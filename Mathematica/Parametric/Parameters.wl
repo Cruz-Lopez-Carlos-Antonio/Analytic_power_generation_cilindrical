@@ -1,6 +1,13 @@
-(* ========================================================= *)
-(* PARAMETERS                                                *)
-(* ========================================================= *)
+(* ============================================================ *)
+(* Code developed by Sánchez Lozano, G., Cruz-López C.-A., and  *)
+(* F. Méndez, for the research:                                 *)
+(* "Power generation in cylindrical microchannels with high     *)
+(* surface zeta potential: a survey on viscoelectric effects    *)
+(* over streaming potentials and efficiency"                    *)
+(* Year: 2026                                                   *)
+(* ------------------------------------------------------------ *)
+(* PARAMETERS                                                   *)
+(* ============================================================ *)
 (*
    Physical constants, physical parameters, derived
    quantities and dimensionless parameters.
@@ -86,24 +93,23 @@ zeta = N[-3165/10^5, wpPar];
 (* Number density [m^-3]
    nInf = 1000 Cbulk NA
 *)
-nInf =1000*Cbulk*NA;
+nInf = 1000*Cbulk*NA;
 
 (* Inverse Debye length kappa [m^-1]
-   kappa =Sqrt[2 z^2 e^2 nInf /
+   kappa = Sqrt[2 z^2 e^2 nInf /
       (epsilon kB T)]
 *)
-
-kappa =Sqrt[(2*z^2*e^2*nInf)/(epsilon*kB*T)];
+kappa = Sqrt[(2*z^2*e^2*nInf)/(epsilon*kB*T)];
 
 (* Debye length [m]
    lambdaD = 1/kappa
 *)
+lambdaD = 1/kappa;
 
-lambdaD =1/kappa;
 (* Thermal potential [V]
    zetaT = kB T / (z e)
 *)
-zetaT =kB*T/(z*e);
+zetaT = kB*T/(z*e);
 
 (* Bulk osmotic pressure of the draw solution [Pa]
 
@@ -111,19 +117,18 @@ zetaT =kB*T/(z*e);
 
    PosDb = 2 kB T nInf
 *)
+PosDb = 2*kB*T*nInf;
 
-PosDb =2*kB*T*nInf;
 (* Bulk electrical conductivity [S/m]
-   sigmaInf =2 e^2 z^2 DiffCoeff nInf / (kB T)
+   sigmaInf = 2 e^2 z^2 DiffCoeff nInf / (kB T)
 *)
-
-sigmaInf =2*e^2*z^2*DiffCoeff*nInf/(kB*T);
+sigmaInf = 2*e^2*z^2*DiffCoeff*nInf/(kB*T);
 
 (* Dimensionless surface potential
    PsiS = zeta / zetaT
 *)
+PsiS = zeta/zetaT;
 
-PsiS =zeta/zetaT;
 
 (* ========================================================= *)
 (* 5. DIMENSIONLESS PARAMETERS                               *)
@@ -132,32 +137,29 @@ PsiS =zeta/zetaT;
 (* Reynolds number
    Re = rho Jw l / mu
 *)
-Reynolds =rho*Jw*l/mu;
+Reynolds = rho*Jw*l/mu;
 
 (* Geometric aspect ratio
-  xi = a/l*)
-
-xi =a/l;
+   xi = a/l
+*)
+xi = a/l;
 
 (* Dimensionless Debye parameter
    delta = a kappa
          = a/lambdaD
 *)
-
-delta =a*kappa;
+delta = a*kappa;
 
 (* Dimensionless parameter associated with the
    electric-field-dependent viscosity model
 
    omega = f (zetaT/a)^2
 *)
-
-omega =f*(zetaT/a)^2;
+omega = f*(zetaT/a)^2;
 
 (* Ratio of osmotic pressure to the characteristic
    pressure associated with the flow
 
    alpha = PosDb l / (mu Jw)
 *)
-
-alpha =PosDb*l/(mu*Jw);
+alpha = PosDb*l/(mu*Jw);
