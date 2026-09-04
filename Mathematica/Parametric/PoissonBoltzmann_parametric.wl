@@ -1,6 +1,13 @@
-(* ========================================================= *)
-(* POISSON-BOLTZMANN PARAMETRIC SOLVER                       *)
-(* ========================================================= *)
+(* ============================================================ *)
+(* Code developed by Sánchez Lozano, G., Cruz-López C.-A., and  *)
+(* F. Méndez, for the research:                                 *)
+(* "Power generation in cylindrical microchannels with high     *)
+(* surface zeta potential: a survey on viscoelectric effects    *)
+(* over streaming potentials and efficiency"                    *)
+(* Year: 2026                                                   *)
+(* ------------------------------------------------------------ *)
+(* POISSON-BOLTZMANN PARAMETRIC SOLVER                          *)
+(* ============================================================ *)
 (*
    Solves the cylindrical nonlinear Poisson-Boltzmann
    equation
