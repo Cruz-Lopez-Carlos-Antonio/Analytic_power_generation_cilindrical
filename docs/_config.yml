@@ -1,0 +1,17 @@
+title: Power Generation in Cylindrical Microchannels
+description: A survey on viscoelectric effects over streaming potentials and efficiency
+theme: minima
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  math_engine: mathjax
+  syntax_highlighter: rouge
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+permalink: /:basename:output_ext
