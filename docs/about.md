@@ -52,16 +52,16 @@ The present computational implementations and numerical verification accompany t
 
 Guillermo Sánchez and Carlos Cruz acknowledges the support from Programa de Apoyo a Proyectos de Investigación e Innovación Tecnológica (PAPPIT), DGAPA-PAPIIT, of Universidad Autónoma Nacional de México (UNAM), under contract number IA104126.
 
-The author Carlos Cruz appreciates the financial support received from the Consejo Nacional de Humanidades, Ciencia y Tecnología (CONAHCYT), under the program *Estancias Posdoctorales por México, 2022*, with the project entitled:[cite: 1]
+The author Carlos Cruz appreciates the financial support received from the Consejo Nacional de Humanidades, Ciencia y Tecnología (CONAHCYT), under the program *Estancias Posdoctorales por México, 2022*, with the project entitled:
 
-> **“Desarrollo de modelos fenomenológicos energéticos de orden fraccional, para la optimización y simulación en reactores nucleares de potencia”**,[cite: 1]
+> **“Desarrollo de modelos fenomenológicos energéticos de orden fraccional, para la optimización y simulación en reactores nucleares de potencia”**,
 
-by which the present development was possible.[cite: 1]
+by which the present development was possible.
 
 ---
 
 ## Repository and Licensing
 
-The source codes are hosted in a public GitHub repository and are released under the **MIT License**, unless otherwise noted.[cite: 1]
+The source codes are hosted in a public GitHub repository and are released under the **MIT License**, unless otherwise noted.
 
-If you use or adapt these codes, please cite the associated article once it is published.[cite: 1]
+If you use or adapt these codes, please cite the associated article once it is published.
