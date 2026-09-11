@@ -5,7 +5,7 @@ title: About
 
 ## Authors
 
-The present computational implementations and numerical validations accompany the manuscript: **"A Novel Power-Series Solution of the Bateman Equations Using the Mittag--Leffler Function"**, which was recently submitted to the journal *Annals of Nuclear Energy* (September 2026).[cite: 1]
+The present computational implementations and numerical verification accompany the manuscript: **"Power generation in cylindrical microchannels with high surface zeta potential"**, which was recently submitted to the journal *Physica Scripta* (September 2026).
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 2rem; margin-bottom: 2.5rem;">
 
@@ -14,7 +14,7 @@ The present computational implementations and numerical validations accompany th
     <img src="{{ '/assets/images/guillermo.png' | relative_url }}" alt="Guillermo Alberto Sánchez Lozano" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #4a90e2;">
     <h3 style="margin: 0; font-size: 1.15rem; color: #333;">Guillermo Alberto Sánchez Lozano</h3>
     <p style="font-size: 0.85rem; color: #666; margin: 10px 0; line-height: 1.4;">
-      Universidad Nacional Autónoma de México<br>
+      Universidad Nacional Autónoma de México (UNAM)<br>
       México
     </p>
     <a href="mailto:guillermo.sanchez@ingenieria.unam.edu" style="font-size: 0.9rem; color: #4a90e2; text-decoration: none; font-weight: bold;">guillermo.sanchez@ingenieria.unam.edu</a>
@@ -26,7 +26,7 @@ The present computational implementations and numerical validations accompany th
     <h3 style="margin: 0; font-size: 1.15rem; color: #333;">Carlos Antonio Cruz López</h3>
     <p style="font-size: 0.85rem; color: #666; margin: 10px 0; line-height: 1.4;">
       Área de Ingeniería en Recursos Energéticos<br>
-      Universidad Autónoma Metropolitana-Iztapalapa<br>
+      Universidad Autónoma Metropolitana-Iztapalapa (UAM)<br>
       México
     </p>
     <a href="mailto:cacl.nucl@gmail.com" style="font-size: 0.9rem; color: #4a90e2; text-decoration: none; font-weight: bold;">cacl.nucl@gmail.com</a>
@@ -37,6 +37,8 @@ The present computational implementations and numerical validations accompany th
     <img src="{{ '/assets/images/federico.png' | relative_url }}" alt="federico mendez lavielle" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #4a90e2;">
     <h3 style="margin: 0; font-size: 1.15rem; color: #333;">federico mendez lavielle</h3>
     <p style="font-size: 0.85rem; color: #666; margin: 10px 0; line-height: 1.4;">
+      Universidad Nacional Autónoma de México (UNAM)<br>
+      México
       <br>
     </p>
     <a href="mailto:federicomendezlavielle@gmail.com" style="font-size: 0.9rem; color: #4a90e2; text-decoration: none; font-weight: bold;">federicomendezlavielle@gmail.com</a>
