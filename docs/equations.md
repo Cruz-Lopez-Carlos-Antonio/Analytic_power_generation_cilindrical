@@ -6,7 +6,7 @@ math: true
 
 ## Physical Model and Governing Equations
 
-The physical system consists of a cylindrical microchannel of radius $a$ and length $l$[cite: 3]. The inner surface of the microchannel is assumed to be negatively charged[cite: 3]. As the electrolyte flows through the channel, the mobile charge within the electrical double layer is transported in the axial direction, leading to charge accumulation at the channel ends and thereby generating a streaming potential[cite: 3].
+The physical system consists of a cylindrical microchannel of radius $a$ and length $l$. The inner surface of the microchannel is assumed to be negatively charged. As the electrolyte flows through the channel, the mobile charge within the electrical double layer is transported in the axial direction, leading to charge accumulation at the channel ends and thereby generating a streaming potential.
 
 <div style="text-align: center; margin: 30px 0;">
   <!-- Asegúrate de subir tu diagrama compilado como imagen a la carpeta de assets -->
@@ -20,13 +20,13 @@ To generalize the solution, the governing equations are transformed into a dimen
 
 | Dimensionless variable | Definition | Description |
 | :--- | :--- | :--- |
-| $Z$ | $z/l$ | Where $z$ is the axial coordinate and $l$ is the characteristic channel length.[cite: 3] |
-| $R$ | $r/a$ | Where $r$ is the radial coordinate and $a$ is the radius of the microchannel.[cite: 3] |
-| $V_Z$ | $v_z/J_w$ | Where $v_z$ is the axial velocity component and $J_w$ is defined via the volumetric flow rate as $Q=A_m J_w$.[cite: 3] |
-| $V_R$ | $v_r/v_{r,c}$ | Where $v_r$ is the radial velocity component and $v_{r,c}$ is the characteristic radial velocity scale.[cite: 3] |
-| $\Psi$ | $\psi/\zeta_T$ | Where $\psi$ is the electric double-layer (EDL) potential and $\zeta_T$ is the thermal potential.[cite: 3] |
-| $\Phi$ | $\phi/\phi_c$ | Where $\phi$ is the streaming potential and $\phi_c$ is the characteristic streaming potential scale.[cite: 3] |
-| $\widetilde{\Pi}$ | $\widetilde{p}/P_{\mathrm{OS,D,b}}$ | Where $\widetilde{p}$ is the modified pressure and $P_{\mathrm{OS,D,b}}$ is the bulk osmotic pressure reference scale.[cite: 3] |
+| $Z$ | $z/l$ | Where $z$ is the axial coordinate and $l$ is the characteristic channel length. |
+| $R$ | $r/a$ | Where $r$ is the radial coordinate and $a$ is the radius of the microchannel.|
+| $V_Z$ | $v_z/J_w$ | Where $v_z$ is the axial velocity component and $J_w$ is defined via the volumetric flow rate as $Q=A_m J_w$.|
+| $V_R$ | $v_r/v_{r,c}$ | Where $v_r$ is the radial velocity component and $v_{r,c}$ is the characteristic radial velocity scale.|
+| $\Psi$ | $\psi/\zeta_T$ | Where $\psi$ is the electric double-layer (EDL) potential and $\zeta_T$ is the thermal potential.|
+| $\Phi$ | $\phi/\phi_c$ | Where $\phi$ is the streaming potential and $\phi_c$ is the characteristic streaming potential scale.|
+| $\widetilde{\Pi}$ | $\widetilde{p}/P_{\mathrm{OS,D,b}}$ | Where $\widetilde{p}$ is the modified pressure and $P_{\mathrm{OS,D,b}}$ is the bulk osmotic pressure reference scale.|
 
 ### Dimensionless Balance Equations
 
@@ -76,3 +76,33 @@ $$
 \frac{1}{2}=\int_{0}^{1}RV_Z(R)dR
 $$
 </div>
+
+### Boundary Conditions
+
+The set of governing differential equations is solved subject to the following boundary conditions:
+
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
+$$
+\begin{aligned}
+\Psi(1) &= \Psi_s &&\quad \text{and} \quad& \Psi'(0) &= 0, \\
+V_Z(1,Z) &= 0 &&\quad \text{and} \quad& \partial_RV_Z(0,Z) &= 0, \\
+V_R(1,Z) &= 0 &&\quad \text{and} \quad& \partial_RV_R(0,Z) &= 0, \\
+\widetilde{\Pi}(R,0) &= 1 &&\quad \text{and} \quad& \Phi(0) &= 0.
+\end{aligned}
+$$
+</div>
+
+At the microchannel wall ($R=1$), the dimensionless EDL potential $\Psi$ is determined by the surface potential $\Psi_s$. Additionally, the axial and radial velocities ($V_Z$ and $V_R$) must satisfy the standard no-slip and no-penetration constraints at this boundary. Due to the axisymmetric geometry of the system, the radial derivatives of $\Psi$, $V_Z$, and $V_R$ all vanish at the central axis ($R=0$). Lastly, at the inlet of the electrokinetic region ($Z=0$), the modified pressure $\widetilde{\Pi}$ equals the bulk osmotic pressure, and the streaming potential $\Phi$ is set to zero, which reflects a state of zero net charge accumulation.
+
+### Dimensionless Parameters
+
+The mathematical formulation relies on several derived dimensionless parameters, whose definitions and numerical magnitudes for the current model are summarized in the table below:
+
+| Parameter | Symbol | Definition | Value |
+| :--- | :--- | :--- | :--- |
+| Reynolds number | $\mathrm{Re}$ | $\frac{\rho J_w l}{\mu_0}$ | $9.7455 \times 10^{-4}$ |
+| Aspect ratio | $\xi$ | $\frac{a}{l}$ | $1.0000 \times 10^{-5}$ |
+| Electrokinetic radius | $\delta$ | $a\kappa$ | $2.3242 \times 10^{1}$ |
+| Dimensionless reference pressure | $\alpha$ | $\frac{P_{\mathrm{OS,D,b}}\,l}{\mu_0 J_w}$ | $3.2025 \times 10^{12}$ |
+| Electrokinetic coupling parameter | $\Lambda$ | $\frac{2\varepsilon^{2}\kappa^{2}\zeta_{T}^{2}}{\mu_{0}\sigma_{\infty}F_{cc}}$ | $7.5951 \times 10^{-1}$ |
+| Viscoelectric parameter | $\omega$ | $f_{\mathrm{VE}} \left(\frac{\zeta_T}{a}\right)^2$ | $1.5171 \times 10^{-3}$ |
