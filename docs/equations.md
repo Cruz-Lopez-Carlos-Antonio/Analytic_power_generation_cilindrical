@@ -5,7 +5,7 @@ math: true
 ---
 <div style="background:#fff3cd; padding:15px; border-left:4px solid #ffeeba; border-radius:6px; margin:20px 0; color:#856404;">
   <strong>⚠️ Disclaimer:</strong><br>
-  The present repository focuses exclusively on the computational implementation and numerical validations of this project. The following sections list the primary mathematical identities governing the physical system. For a comprehensive discussion of the underlying theory, detailed derivations, and physical implications, the interested reader is strongly encouraged to consult the original manuscript, which was recently submitted to the journal <em>Physica Scripta</em>.[cite: 1]
+  The present repository focuses exclusively on the computational implementation and numerical validations of this project. The following sections list the primary mathematical identities governing the physical system. For a comprehensive discussion of the underlying theory, detailed derivations, and physical implications, the interested reader is strongly encouraged to consult the original manuscript, which was recently submitted to the journal <em>Physica Scripta</em>.
 </div>
 
 ## Physical Model and Governing Equations
