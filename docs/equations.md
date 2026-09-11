@@ -20,7 +20,7 @@ The computational domain corresponds to an axisymmetric cylindrical microchannel
 
 ## Original Mass Balance System
 
-Before introducing the dimensionless variables, the fundamental physics of the cylindrical microchannel is governed by the original dimensional system of equations.[cite: 4] For a steady, incompressible, and axisymmetric flow, the continuity equation is given by:[cite: 4]
+Before introducing the dimensionless variables, the fundamental physics of the cylindrical microchannel is governed by the original dimensional system of equations.[cite: 4] For a steady, incompressible, and axisymmetric flow, the continuity equation is given by:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
