@@ -1,115 +1,78 @@
 ---
 layout: default
-title: Main Equations
+title: Physical Model
 math: true
 ---
 
-# The Bateman Equations
-The codes developed in the present repository solves the following system of differential equations:
+## Physical Model and Governing Equations
+
+The physical system consists of a cylindrical microchannel of radius $a$ and length $l$[cite: 3]. The inner surface of the microchannel is assumed to be negatively charged[cite: 3]. As the electrolyte flows through the channel, the mobile charge within the electrical double layer is transported in the axial direction, leading to charge accumulation at the channel ends and thereby generating a streaming potential[cite: 3].
+
+<div style="text-align: center; margin: 30px 0;">
+  <!-- Asegúrate de subir tu diagrama compilado como imagen a la carpeta de assets -->
+  <img src="{{ '/assets/images/diagrama_microcanal.png' | relative_url }}" alt="Schematic representation of the cylindrical microchannel" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+  <p style="color: #666; font-size: 0.9rem; margin-top: 10px;"><em>Figure 1: Schematic representation of the cylindrical microchannel.</em></p>
+</div>
+
+### Dimensionless Variables
+
+To generalize the solution, the governing equations are transformed into a dimensionless form. The mathematical formulation uses the dimensionless variables defined in the following table:
+
+| Dimensionless variable | Definition | Description |
+| :--- | :--- | :--- |
+| $Z$ | $z/l$ | Where $z$ is the axial coordinate and $l$ is the characteristic channel length.[cite: 3] |
+| $R$ | $r/a$ | Where $r$ is the radial coordinate and $a$ is the radius of the microchannel.[cite: 3] |
+| $V_Z$ | $v_z/J_w$ | Where $v_z$ is the axial velocity component and $J_w$ is defined via the volumetric flow rate as $Q=A_m J_w$.[cite: 3] |
+| $V_R$ | $v_r/v_{r,c}$ | Where $v_r$ is the radial velocity component and $v_{r,c}$ is the characteristic radial velocity scale.[cite: 3] |
+| $\Psi$ | $\psi/\zeta_T$ | Where $\psi$ is the electric double-layer (EDL) potential and $\zeta_T$ is the thermal potential.[cite: 3] |
+| $\Phi$ | $\phi/\phi_c$ | Where $\phi$ is the streaming potential and $\phi_c$ is the characteristic streaming potential scale.[cite: 3] |
+| $\widetilde{\Pi}$ | $\widetilde{p}/P_{\mathrm{OS,D,b}}$ | Where $\widetilde{p}$ is the modified pressure and $P_{\mathrm{OS,D,b}}$ is the bulk osmotic pressure reference scale.[cite: 3] |
+
+### Dimensionless Balance Equations
+
+The solution for the streaming potential, the velocity field, and the induced pressure is obtained by solving the following system of differential equations:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
-\frac{dx_i(t)}{dt}
-=\lambda_{i-1} x_{i-1}(t)-\lambda_i x_i(t), \qquad 1 \le i \le n,
+\frac{d^2\Psi}{dR^2} + \frac{1}{R}\frac{d\Psi}{dR} = \delta^2\sinh(\Psi)
 $$
 </div>
 
-which models the linear following decay chain:
-
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
-x_1(t) \xrightarrow{\lambda_1} 
-x_2(t) \xrightarrow{\lambda_2} 
-\cdots 
-\xrightarrow{\lambda_{n-1}} 
-x_n(t) \xrightarrow{\lambda_n}\cdots,$$
-
-Subject to the following initial conditions:
-$x_i(0)=0$, with $i=2,3,\dots,n$.
-
----
-
-## Analytical Solution using the Mittag-Leffler Function
-
-The analytical solution obtained for the aforementioned system is expressed as follows:
+\frac{1}{R}\frac{\partial}{\partial R}(RV_R) + \frac{\partial V_Z}{\partial Z} = 0
+$$
+</div>
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
-\begin{equation}
 \begin{aligned}
-x_n(t)&=x_1(0)
-\left(\prod_{k=1}^{n-1}\lambda_k
-\right)
-\frac{1}{a_0}\sum_{m=0}^{\infty}
-(-1)^m\sum_{\substack{
-k_0+k_1+\cdots+k_{n-2}=m \\
-k_0,k_1,\ldots,k_{n-2}\geq 0
-}}\frac{1}{k_0!\,k_1!\cdots k_{n-2}!}
-\\[6pt]
-&\quad\times
-\left(\prod_{i=0}^{n-2}\left(\frac{a_{n-i}}{a_0}
-\right)^{k_i}\right)
-t^{m+\beta-1}E_{1,\beta}^{(m)}
-\left(-\frac{a_1}{a_0}t\right),
+\mathrm{Re}\,\xi^2 \left(V_R\frac{\partial V_R}{\partial R} +V_Z\frac{\partial V_R}{\partial Z}\right) 
+&= -\alpha \frac{\partial\widetilde{\Pi}}{\partial R} +\frac{2}{R} \frac{\partial}{\partial R}\left( \exp\!\left[\omega \left(\frac{d\Psi}{dR}\right)^2 \right]R\frac{\partial V_R}{\partial R} \right) \\
+&\quad + \frac{\partial}{\partial Z} \left(\exp\!\left[\omega\left( \frac{d\Psi}{dR}\right)^2\right] \left[\xi^2\frac{\partial V_R}{\partial Z} +\frac{\partial V_Z}{\partial R}\right] \right) \\
+&\quad - 2\exp\!\left[\omega\left(\frac{d\Psi}{dR} \right)^2\right] \frac{V_R}{R^2}
 \end{aligned}
-\end{equation}
-%
 $$
 </div>
 
-where the coefficients $a_i$ depends on the lambda parameters as follows:
-
-$$
-a_0=1, \ \ a_k =
-\sum_{i_1=1}^{\,n-k+1}
-\sum_{i_2=i_1+1}^{\,n-k+2}
-\cdots \sum_{i_k=i_{k-1}+1}^{\,n}
-\prod_{j=1}^{k}\lambda_{i_j}.
-$$
-
-and where the Mittag-Leffler function, $E_{\alpha,\beta}(z)$, is defined as
-
-$$
-E_{\alpha,\beta}(z)=
-\sum_{k=0}^{\infty}
-\frac{z^k}{\Gamma(\alpha k+\beta)},
-\qquad
-\Re(\alpha)>0,
-\quad z,\beta\in\mathbb{C}.
-$$
-
-For the case of the derivatives, the following formulation is used in the work
-
-$$
-E_{\alpha,\beta}^{(m)}(z)
-=m!\,E_{\alpha,\beta+\alpha m}^{\,m+1}(z).
-$$
-
-where $E_{\alpha,\beta}^{\gamma}(z)$ is the Prabhakar function, which is defined as:
-
-$$
-E_{\alpha,\beta}^{\,\gamma}(z)
-=\sum_{k=0}^{\infty}
-\frac{\Gamma(\gamma+k)}
-{\Gamma(\gamma)\,k!\,\Gamma(\alpha k+\beta)}
-\,z^k.$$
-
-For the more details, see the related entro in this repository.
-Finally, this expression can be written in a more compact vectorial form, which is very convenient to the computational implementation:
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
-x_n(t)=
-\frac{x_1(0)}{a_0}
-\left(\prod_{j=1}^{n-1}\lambda_j\right)
-\sum_{\mathbf{k}\in\mathbb{N}_0^{\,n-1}}
-(-1)^{|\mathbf{k}|}
-\frac{\mathbf{c}^{\mathbf{k}}}{\mathbf{k}!}
-\,t^{\gamma(\mathbf{k})}
-E_{1,\beta(\mathbf{k})}^{(|\mathbf{k}|)}
-\bigl(-\mu t\bigr).
+\begin{aligned}
+\mathrm{Re}\,\xi^2 \left( V_R\frac{\partial V_Z}{\partial R} + V_Z\frac{\partial V_Z}{\partial Z} \right)
+&= -\alpha\xi^2 \frac{\partial\widetilde{\Pi}}{\partial Z} + \frac{1}{R} \frac{\partial}{\partial R} \left( \exp\!\left[ \omega \left( \frac{d\Psi}{dR} \right)^2 \right] R \left[ \xi^2 \frac{\partial V_R}{\partial Z} + \frac{\partial V_Z}{\partial R} \right] \right) \\
+&\quad + 2\xi^2 \frac{\partial}{\partial Z} \left( \exp\!\left[ \omega \left( \frac{d\Psi}{dR} \right)^2 \right] \frac{\partial V_Z}{\partial Z} \right) + \sinh(\Psi)\frac{d\Phi}{dZ}
+\end{aligned}
 $$
 </div>
----
 
-## Validation
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
+$$
+\frac{d\Phi}{dZ}=-\Lambda\delta^2 \int_0^1V_Z(R)\sinh(\Psi(R))R\,dR
+$$
+</div>
 
-For further details on the high-precision numerical tests and the evaluation of relative errors for these solutions, please see the **Validation** page.
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
+$$
+\frac{1}{2}=\int_{0}^{1}RV_Z(R)dR
+$$
+</div>
