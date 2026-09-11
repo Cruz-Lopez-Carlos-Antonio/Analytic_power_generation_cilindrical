@@ -3,6 +3,10 @@ layout: default
 title: Physical Model
 math: true
 ---
+<div style="background:#fff3cd; padding:15px; border-left:4px solid #ffeeba; border-radius:6px; margin:20px 0; color:#856404;">
+  <strong>⚠️ Disclaimer:</strong><br>
+  The present repository focuses exclusively on the computational implementation and numerical validations of this project. The following sections list the primary mathematical identities governing the physical system. For a comprehensive discussion of the underlying theory, detailed derivations, and physical implications, the interested reader is strongly encouraged to consult the original manuscript, which was recently submitted to the journal <em>Physica Scripta</em>.[cite: 1]
+</div>
 
 ## Physical Model and Governing Equations
 
@@ -13,6 +17,45 @@ The physical system consists of a cylindrical microchannel of radius $a$ and len
   <img src="{{ '/assets/images/diagrama_microcanal.png' | relative_url }}" alt="Schematic representation of the cylindrical microchannel" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
   <p style="color: #666; font-size: 0.9rem; margin-top: 10px;"><em>Figure 1: Schematic representation of the cylindrical microchannel.</em></p>
 </div>
+
+## Original Mass Balance System
+
+Before introducing the dimensionless variables, the fundamental physics of the cylindrical microchannel is governed by the original dimensional system of equations.[cite: 4] For a steady, incompressible, and axisymmetric flow, the continuity equation is given by:[cite: 4]
+
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
+$$
+\frac{1}{r}\frac{\partial}{\partial r}\left(r v_r\right)+\frac{\partial v_z}{\partial z} = 0
+$$
+</div>
+
+The electric double-layer (EDL) potential, which varies in the radial direction normal to the microchannel surface, is governed by the fully nonlinear Poisson–Boltzmann equation in cylindrical coordinates:[cite: 4]
+
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
+$$
+\frac{d^2\psi}{dr^2} +\frac{1}{r}\frac{d\psi}{dr} =\frac{2zen_{\infty}}{\varepsilon} \sinh\!\left(\frac{ze\psi}{k_B T}\right)
+$$
+</div>
+
+By incorporating the radial electrostatic contribution into a modified pressure $\widetilde{p}$, and substituting the constitutive relations for the viscous stresses and electric body-force components, the radial and axial momentum conservation equations are respectively formulated as:[cite: 4]
+
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
+$$
+\begin{aligned}
+\rho\left(v_r\frac{\partial v_r}{\partial r} +v_z\frac{\partial v_r}{\partial z}\right) &= -\frac{\partial\widetilde{p}}{\partial r} +\frac{2}{r}\frac{\partial}{\partial r} \left(\mu r\frac{\partial v_r}{\partial r} \right) \\
+&\quad +\frac{\partial}{\partial z} \left[\mu\left(\frac{\partial v_r}{\partial z} +\frac{\partial v_z}{\partial r}\right) \right]-2\mu\frac{v_r}{r^2}
+\end{aligned}
+$$
+</div>
+
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
+$$
+\begin{aligned}
+\rho\left( v_r\frac{\partial v_z}{\partial r} +v_z\frac{\partial v_z}{\partial z} \right) &= -\frac{\partial\widetilde{p}}{\partial z} +\frac{1}{r}\frac{\partial}{\partial r} \left[\mu r\left( \frac{\partial v_r}{\partial z} +\frac{\partial v_z}{\partial r} \right)\right] \\
+&\quad + 2\frac{\partial}{\partial z} \left(\mu\frac{\partial v_z}{\partial z}\right)+ 2zen_{\infty} \sinh\!\left( \frac{ze\psi}{k_B T} \right) \frac{\partial\phi}{\partial z}
+\end{aligned}
+$$
+</div>
+
 
 ### Dimensionless Variables
 
