@@ -5,12 +5,12 @@ math: true
 ---
 <div style="background:#fff3cd; padding:15px; border-left:4px solid #ffeeba; border-radius:6px; margin:20px 0; color:#856404;">
   <strong>⚠️ Disclaimer:</strong><br>
-  The present repository focuses exclusively on the computational implementation and numerical validations of this project. The following sections list the primary mathematical identities governing the physical system. For a comprehensive discussion of the underlying theory, detailed derivations, and physical implications, the interested reader is strongly encouraged to consult the original manuscript, which was recently submitted to the journal <em>Physica Scripta</em>.
+  This repository is intended to document the computational implementation and numerical validation associated with this work. Only the governing equations and the dimensionless formulations required to describe the implemented models are summarized here. Detailed derivations, theoretical considerations, and discussion of the physical implications are reserved for the accompanying manuscript. Readers interested in these aspects are referred to the original work.
 </div>
 
 ## Physical Model and Governing Equations
 
-The physical system consists of a cylindrical microchannel of radius $a$ and length $l$. The inner surface of the microchannel is assumed to be negatively charged. As the electrolyte flows through the channel, the mobile charge within the electrical double layer is transported in the axial direction, leading to charge accumulation at the channel ends and thereby generating a streaming potential.
+The computational domain corresponds to an axisymmetric cylindrical microchannel with radius $a$ and axial length $l$. The channel contains an electrolyte in contact with a negatively charged inner wall, giving rise to an electrical double layer near the solid--liquid interface. Axial transport of the mobile ionic charge generates charge separation along the channel and, consequently, an induced streaming potential.
 
 <div style="text-align: center; margin: 30px 0;">
   <!-- Asegúrate de subir tu diagrama compilado como imagen a la carpeta de assets -->
