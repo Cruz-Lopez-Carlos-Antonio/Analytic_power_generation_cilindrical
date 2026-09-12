@@ -54,6 +54,14 @@ You can use the navigation bar above, or the following buttons, to explore:
       </span>
     </div>
   </a>
+  <a href="{{ '/semianalytic.html' | relative_url }}" style="text-decoration:none; color:inherit;">
+    <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+      <strong>Semi-analytic<br>solution</strong><br/>
+      <span style="font-size:0.95rem; color:#555;">
+        Parametric formulation for the average streaming potential and conversion efficiency.
+      </span>
+    </div>
+  </a>
 
   <a href="{{ '/codes.html' | relative_url }}" style="text-decoration:none; color:inherit;">
     <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
