@@ -170,7 +170,7 @@ $$
 These dimensional equations constitute the starting point of the computational model. Their dimensionless formulation and subsequent reduction are summarized below; detailed derivations and physical discussion are provided in the accompanying manuscript.
 
 
-## 2. Dimensionless Variables
+## 2. Dimensionless Variables and Parameters
 
 To generalize the solution, the governing equations are transformed into a dimensionless form. The mathematical formulation uses the dimensionless variables defined in the following table:
 
@@ -183,6 +183,17 @@ To generalize the solution, the governing equations are transformed into a dimen
 | $\Psi$ | $\psi/\zeta_T$ | Where $\psi$ is the electric double-layer (EDL) potential and $\zeta_T$ is the thermal potential.|
 | $\Phi$ | $\phi/\phi_c$ | Where $\phi$ is the streaming potential and $\phi_c$ is the characteristic streaming potential scale.|
 | $\widetilde{\Pi}$ | $\widetilde{p}/P_{\mathrm{OS,D,b}}$ | Where $\widetilde{p}$ is the modified pressure and $P_{\mathrm{OS,D,b}}$ is the bulk osmotic pressure reference scale.|
+
+The mathematical formulation relies on several derived dimensionless parameters, whose definitions and numerical magnitudes for the current model are summarized in the table below:
+
+| Parameter | Symbol | Definition | Value |
+| :--- | :--- | :--- | :--- |
+| Reynolds number | $\mathrm{Re}$ | $\frac{\rho J_w l}{\mu_0}$ | $9.7455 \times 10^{-4}$ |
+| Aspect ratio | $\xi$ | $\frac{a}{l}$ | $1.0000 \times 10^{-5}$ |
+| Electrokinetic radius | $\delta$ | $a\kappa$ | $2.3242 \times 10^{1}$ |
+| Dimensionless reference pressure | $\alpha$ | $\frac{P_{\mathrm{OS,D,b}}\,l}{\mu_0 J_w}$ | $3.2025 \times 10^{12}$ |
+| Electrokinetic coupling parameter | $\Lambda$ | $\frac{2\varepsilon^{2}\kappa^{2}\zeta_{T}^{2}}{\mu_{0}\sigma_{\infty}F_{cc}}$ | $7.5951 \times 10^{-1}$ |
+| Viscoelectric parameter | $\omega$ | $f_{\mathrm{VE}} \left(\frac{\zeta_T}{a}\right)^2$ | $1.5171 \times 10^{-3}$ |
 
 ## 3. Dimensionless Balance Equations
 
@@ -250,15 +261,4 @@ $$
 
 At the microchannel wall ($R=1$), the dimensionless EDL potential $\Psi$ is determined by the surface potential $\Psi_s$. Additionally, the axial and radial velocities ($V_Z$ and $V_R$) must satisfy the standard no-slip and no-penetration constraints at this boundary. Due to the axisymmetric geometry of the system, the radial derivatives of $\Psi$, $V_Z$, and $V_R$ all vanish at the central axis ($R=0$). Lastly, at the inlet of the electrokinetic region ($Z=0$), the modified pressure $\widetilde{\Pi}$ equals the bulk osmotic pressure, and the streaming potential $\Phi$ is set to zero, which reflects a state of zero net charge accumulation.
 
-## 5. Dimensionless Parameters
 
-The mathematical formulation relies on several derived dimensionless parameters, whose definitions and numerical magnitudes for the current model are summarized in the table below:
-
-| Parameter | Symbol | Definition | Value |
-| :--- | :--- | :--- | :--- |
-| Reynolds number | $\mathrm{Re}$ | $\frac{\rho J_w l}{\mu_0}$ | $9.7455 \times 10^{-4}$ |
-| Aspect ratio | $\xi$ | $\frac{a}{l}$ | $1.0000 \times 10^{-5}$ |
-| Electrokinetic radius | $\delta$ | $a\kappa$ | $2.3242 \times 10^{1}$ |
-| Dimensionless reference pressure | $\alpha$ | $\frac{P_{\mathrm{OS,D,b}}\,l}{\mu_0 J_w}$ | $3.2025 \times 10^{12}$ |
-| Electrokinetic coupling parameter | $\Lambda$ | $\frac{2\varepsilon^{2}\kappa^{2}\zeta_{T}^{2}}{\mu_{0}\sigma_{\infty}F_{cc}}$ | $7.5951 \times 10^{-1}$ |
-| Viscoelectric parameter | $\omega$ | $f_{\mathrm{VE}} \left(\frac{\zeta_T}{a}\right)^2$ | $1.5171 \times 10^{-3}$ |
