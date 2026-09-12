@@ -21,7 +21,6 @@ rise to an electrical double layer near the solid--liquid interface. Axial trans
   This repository is intended to document the computational implementation and numerical validation associated with this work. Only the governing equations and the dimensionless formulations required to describe the implemented models are summarized here. Detailed derivations, theoretical considerations, and discussion of the physical implications are reserved for the accompanying manuscript. Readers interested in these aspects are referred to the original work.
 </div>
 
-<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 
 ## Dimensional Governing Equations
 
