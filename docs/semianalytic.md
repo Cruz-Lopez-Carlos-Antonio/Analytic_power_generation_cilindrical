@@ -15,11 +15,11 @@ This section outlines the semianalytical approach used to calculate the parametr
 
 ## The Fully Developed Assumption
 
-The mathematical reduction begins by assuming a hydrodynamically fully developed regime.[cite: 7] Under this assumption, the axial velocity profile remains constant along the longitudinal direction ($\partial V_Z/\partial Z=0$), which directly implies that the radial velocity component vanishes completely ($V_R=0$).[cite: 7]
+The mathematical reduction begins by assuming a hydrodynamically fully developed regime. Under this assumption, the axial velocity profile remains constant along the longitudinal direction ($\partial V_Z/\partial Z=0$), which directly implies that the radial velocity component vanishes completely ($V_R=0$).
 
 ## Reduced Equation System
 
-Applying the fully developed conditions, the original system can be reduced to a single Fredholm ordinary integro-differential equation for the function $F(R)$:[cite: 7]
+Applying the fully developed conditions, the original system can be reduced to a single Fredholm ordinary integro-differential equation for the function $F(R)$:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
