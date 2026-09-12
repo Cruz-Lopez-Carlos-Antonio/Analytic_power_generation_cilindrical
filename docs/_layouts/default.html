@@ -32,13 +32,36 @@
         <header>
           <h1>{{ site.title }}</h1>
           <p>{{ site.description }}</p>
-          <nav style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-            <a href="{{ "/index.html" | relative_url }}">Home</a> <span>|</span>
-            <a href="{{ "/equations.html" | relative_url }}" style="text-align: center; line-height: 1.1;">Physical description and<br>governing equations</a> <span>|</span>
-            <a href="{{ "/codes.html" | relative_url }}">Codes</a> <span>|</span>
-            <a href="{{ "/validation.html" | relative_url }}">Validation</a> <span>|</span>
-            <a href="{{ "/about.html" | relative_url }}">About</a>
-          </nav>
+          <style>
+  .nav-button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px;
+    background-color: #f8f9fa;
+    color: #333 !important;
+    text-decoration: none !important;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+  }
+  .nav-button:hover {
+    background-color: #e9ecef;
+    border-color: #ccc;
+    color: #0056b3 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+</style>
+
+<nav style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 15px;">
+  <a href="{{ '/index.html' | relative_url }}" class="nav-button">Home</a>
+  <a href="{{ '/equations.html' | relative_url }}" class="nav-button" style="line-height: 1.2;">Physical description and<br>governing equations</a>
+  <a href="{{ '/codes.html' | relative_url }}" class="nav-button">Codes</a>
+  <a href="{{ '/validation.html' | relative_url }}" class="nav-button">Validation</a>
+  <a href="{{ '/about.html' | relative_url }}" class="nav-button">About</a>
+</nav>
           <hr>
         </header>
 
