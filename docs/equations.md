@@ -8,15 +8,26 @@ math: true
   This repository is intended to document the computational implementation and numerical validation associated with this work. Only the governing equations and the dimensionless formulations required to describe the implemented models are summarized here. Detailed derivations, theoretical considerations, and discussion of the physical implications are reserved for the accompanying manuscript. Readers interested in these aspects are referred to the original work.
 </div>
 
-## Physical Model and Governing Equations
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 
-The computational domain corresponds to an axisymmetric cylindrical microchannel with radius $a$ and axial length $l$. The channel contains an electrolyte in contact with a negatively charged inner wall, giving rise to an electrical double layer near the solid--liquid interface. Axial transport of the mobile ionic charge generates charge separation along the channel and, consequently, an induced streaming potential.
+$$
+\mu(r)
+=
+\mu_0
+\exp\!\left[
+f_{\mathrm{VE}}
+\left(
+\frac{d\psi}{dr}
+\right)^2
+\right].
+$$
 
-<div style="text-align: center; margin: 30px 0;">
-  <!-- Asegúrate de subir tu diagrama compilado como imagen a la carpeta de assets -->
-  <img src="{{ '/assets/images/diagrama_microcanal.png' | relative_url }}" alt="Schematic representation of the cylindrical microchannel" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-  <p style="color: #666; font-size: 0.9rem; margin-top: 10px;"><em>Figure 1: Schematic representation of the cylindrical microchannel.</em></p>
 </div>
+
+These dimensional equations constitute the starting point of the
+computational model. Their dimensionless formulation and subsequent
+reduction are summarized below; detailed derivations and physical
+discussion are provided in the accompanying manuscript.
 
 ## Original Mass Balance System
 
