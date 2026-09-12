@@ -27,7 +27,7 @@ $$
 $$
 </div>
 
-This integro-differential equation is simplified into a pure-differential one by introducing the constant parameter $\Omega$, defined as:[cite: 7]
+This integro-differential equation is simplified into a pure-differential one by introducing the constant parameter $\Omega$, defined as:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
@@ -37,7 +37,7 @@ $$
 
 ## Auxiliary Functions
 
-To facilitate the analytical integration, two auxiliary functions are defined for the integral of the electrical forces and the viscoelectric modification, respectively:[cite: 7]
+To facilitate the analytical integration, two auxiliary functions are defined for the integral of the electrical forces and the viscoelectric modification, respectively:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
@@ -47,7 +47,7 @@ $$
 
 ## Solution for $F(R)$
 
-Integrating the modified momentum equation and applying the no-slip boundary condition at the wall ($F(1)=0$), the radial function $F(R)$ is obtained as the superposition of two components:[cite: 7]
+Integrating the modified momentum equation and applying the no-slip boundary condition at the wall ($F(1)=0$), the radial function $F(R)$ is obtained as the superposition of two components:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
@@ -55,7 +55,7 @@ F(R)=F_0(R)+\Omega F_1(R)
 $$
 </div>
 
-where $F_0(R)$ and $F_1(R)$ are given by:[cite: 7]
+where $F_0(R)$ and $F_1(R)$ are given by:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
@@ -65,7 +65,7 @@ $$
 
 ## Streaming Potential and Conversion Efficiency
 
-The average streaming potential can be evaluated directly using the previous definitions:[cite: 7]
+The average streaming potential can be evaluated directly using the previous definitions:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
@@ -73,7 +73,7 @@ $$
 $$
 </div>
 
-where the constants $A$ and $B$ encapsulate the integrals of the $F_0$ and $F_1$ functions across the microchannel section:[cite: 7]
+where the constants $A$ and $B$ encapsulate the integrals of the $F_0$ and $F_1$ functions across the microchannel section:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
@@ -81,7 +81,7 @@ A=\int_{0}^{1}F_0(R)\sinh\left(\Psi\left(R\right)\right)R\,dR \quad\text{and}\qu
 $$
 </div>
 
-Finally, the conversion efficiency $\eta$, representing the ratio of output electrical power to input hydrodynamic power, is formulated as:[cite: 7]
+Finally, the conversion efficiency $\eta$, representing the ratio of output electrical power to input hydrodynamic power, is formulated as:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
