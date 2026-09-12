@@ -167,7 +167,7 @@ f_{\mathrm{VE}}
 $$
 
 </div>
-
+where $\mu_0$ denotes the viscosity of the electrolyte in the absence of the viscoelectric effect, and $f_{\mathrm{VE}}$ is the viscoelectric coefficient.
 These dimensional equations constitute the starting point of the computational model. Their dimensionless formulation and subsequent reduction are summarized below; detailed derivations and physical discussion are provided in the accompanying manuscript.
 
 
