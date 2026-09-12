@@ -22,7 +22,7 @@ rise to an electrical double layer near the solid--liquid interface. Axial trans
 </div>
 
 
-## Dimensional Governing Equations
+## 1. Dimensional Governing Equations
 
 The computational model is based on the dimensional conservation equations for steady, incompressible, and axisymmetric flow in a cylindrical microchannel. The continuity equation is
 
@@ -170,7 +170,7 @@ $$
 These dimensional equations constitute the starting point of the computational model. Their dimensionless formulation and subsequent reduction are summarized below; detailed derivations and physical discussion are provided in the accompanying manuscript.
 
 
-### Dimensionless Variables
+## 2. Dimensionless Variables
 
 To generalize the solution, the governing equations are transformed into a dimensionless form. The mathematical formulation uses the dimensionless variables defined in the following table:
 
@@ -184,7 +184,7 @@ To generalize the solution, the governing equations are transformed into a dimen
 | $\Phi$ | $\phi/\phi_c$ | Where $\phi$ is the streaming potential and $\phi_c$ is the characteristic streaming potential scale.|
 | $\widetilde{\Pi}$ | $\widetilde{p}/P_{\mathrm{OS,D,b}}$ | Where $\widetilde{p}$ is the modified pressure and $P_{\mathrm{OS,D,b}}$ is the bulk osmotic pressure reference scale.|
 
-### Dimensionless Balance Equations
+## 3. Dimensionless Balance Equations
 
 The solution for the streaming potential, the velocity field, and the induced pressure is obtained by solving the following system of differential equations:
 
@@ -233,7 +233,7 @@ $$
 $$
 </div>
 
-### Boundary Conditions
+## 4. Boundary Conditions
 
 The set of governing differential equations is solved subject to the following boundary conditions:
 
@@ -250,7 +250,7 @@ $$
 
 At the microchannel wall ($R=1$), the dimensionless EDL potential $\Psi$ is determined by the surface potential $\Psi_s$. Additionally, the axial and radial velocities ($V_Z$ and $V_R$) must satisfy the standard no-slip and no-penetration constraints at this boundary. Due to the axisymmetric geometry of the system, the radial derivatives of $\Psi$, $V_Z$, and $V_R$ all vanish at the central axis ($R=0$). Lastly, at the inlet of the electrokinetic region ($Z=0$), the modified pressure $\widetilde{\Pi}$ equals the bulk osmotic pressure, and the streaming potential $\Phi$ is set to zero, which reflects a state of zero net charge accumulation.
 
-### Dimensionless Parameters
+## 5. Dimensionless Parameters
 
 The mathematical formulation relies on several derived dimensionless parameters, whose definitions and numerical magnitudes for the current model are summarized in the table below:
 
