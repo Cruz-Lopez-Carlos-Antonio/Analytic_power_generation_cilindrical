@@ -149,6 +149,7 @@ $$
 $$
 
 </div>
+where $n_{\infty}$ is the bulk ionic number concentration, $z$ is the ionic valence, $e$ is the elementary charge, $\varepsilon$ is the permittivity of the electrolyte, $k_B$ is the Boltzmann constant, and $T$ is the absolute temperature.
 
 Finally, the viscoelectric dependence of the local viscosity is represented by
 
