@@ -35,4 +35,56 @@ Developed by Sánchez Lozano, G., Cruz-López C.-A., and F. Méndez (2026).
   </ul>
 </div>
 
-*(Nota: Dejé la misma barra de navegación hermosa que tenías con los enlaces a Equations, Codes, Validation y About, ya que esa estructura te funciona perfecto).*
+<div style="text-align: center; margin: 30px 0;">
+  <!-- Sube la imagen compilada de tu esquema de dependencias de Wolfram a la carpeta assets/images/ -->
+  <img src="{{ '/assets/images/wolfram_solver_workflow.png' | relative_url }}" alt="Hierarchical dependency scheme of the parameterized semianalytical solver" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+  <p style="color: #666; font-size: 0.9rem; margin-top: 10px;"><em>Figure: Hierarchical workflow of the semianalytical parametric modules.</em></p>
+</div>
+
+# Map of the site 
+You can use the navigation bar above, or the following buttons, to explore:
+
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0.9rem; margin:1rem 0;">
+
+  <a href="{{ '/equations.html' | relative_url }}" style="text-decoration:none; color:inherit;">
+    <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
+      <strong>Physical description and<br>governing equations</strong><br/>
+      <span style="font-size:0.95rem; color:#555;">
+        Main analytical expressions and key formulae used in the article.
+      </span>
+    </div>
+  </a>
+
+  <a href="{{ '/codes.html' | relative_url }}" style="text-decoration:none; color:inherit;">
+    <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
+      <strong>Codes</strong><br/>
+      <span style="font-size:0.95rem; color:#555;">
+        Summary of the Wolfram Mathematica scripts, interfaces, and numerical settings.
+      </span>
+    </div>
+  </a>
+
+  <a href="{{ '/validation.html' | relative_url }}" style="text-decoration:none; color:inherit;">
+    <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
+      <strong>Validation</strong><br/>
+      <span style="font-size:0.95rem; color:#555;">
+        Comparison against the numerical benchmarks and parametric studies.
+      </span>
+    </div>
+  </a>
+
+  <a href="{{ '/about.html' | relative_url }}" style="text-decoration:none; color:inherit;">
+    <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
+      <strong>About</strong><br/>
+      <span style="font-size:0.95rem; color:#555;">
+        Authorship, affiliations, and financial support acknowledgements.
+      </span>
+    </div>
+  </a>
+
+</div>
+
+<div style="border-left: 4px solid #f39c12; padding: 0.7em 1em; background: #fff7e6; margin-top: 25px;">
+<b style="color:#c0392b;">⚠️  Important:</b><br>
+For more details on the derivation of the physical model, its computational implementation, as well as a comprehensive numerical analysis, please see the manuscript mentioned above.
+</div>
