@@ -1,62 +1,45 @@
 ---
 layout: default
-title: MATLAB Codes
+title: Codes
+math: true
 ---
 
-## Overview of the MATLAB scripts
+# Semianalytical Parametric Solvers
 
-The repository contains five MATLAB Codes. Two related to the new proposed power-series solution, which differs between them, because one uses a cache file where the Diophantinc solutions $k_0+k_1+...+k_{p-1}=m$ are precomputed, while the other one computes them over fly. 
+The computational core of this repository focuses on solving two primary physical variables of interest: the average streaming potential ($\Phi_{\mathrm{av}}$) and the conversion efficiency ($\eta$). These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs. 
 
----
+Currently, the implementation focuses on the average streaming potential, which is structurally formulated as:
 
-### 1. `Neutron_density_SciPyNumPy.py`
-<div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
-  <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_SciPyNumPy.py" 
-     target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
-     👉 Click here to view the code in a new tab
-  </a>
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
+$$
+\Phi_{\mathrm{av}} = \Phi_{\mathrm{av}}(\delta, \Psi_s, \text{set})
+$$
 </div>
 
-This script implements the analytical solution of the neutron density $$n(t)$$ using **SciPy** and **NumPy**.  
-The core of the implementation is based on the integral representation shown in the *Equations* page, where the involved integrals are evaluated using `scipy.integrate.quad`.
+where $\delta$ is the electrokinetic radius, $\Psi_s$ is the surface potential, and $\text{set}$ represents a grouped array of additional input parameters (such as the viscoelectric parameter $\omega$, the coupling parameter $\Lambda$, and the longitudinal pressure measure $\Pi_D$) evaluated seamlessly by the solver. The corresponding efficiency solver $\eta(\delta, \Psi_s, \text{set})$ will be incorporated once its definitive module is validated.
 
-The script also contains a linear system, derived from the initial conditions $$n(0)$$ and $$\dot n(0)$$, to determine the constants $$K_1$$ and $$K_2$$ via a least-squares procedure (`numpy.linalg.lstsq`), including column-wise normalization for numerical stability.
+## Main Script and Dependencies
 
----
+The automated parametric studies for $\Phi_{\mathrm{av}}$ are generated using the main script, available here:
 
-### 2. `Neutron_density_mpmath.py`
-[Link to access to the code](https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_mpmath.py)
-This script provides a **high-precision** version of the analytical solution for $$n(t)$$, implemented with **mpmath**.  
-It includes:
+👉 <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/GeneratePhiAvParametricStudy.wl" target="_blank" rel="noopener noreferrer">GeneratePhiAvParametricStudy.wl</a>
 
-- Multiprecision evaluation of the integrals $$I_1,\dots,I_6$$ described in the manuscript,
-- A robust $$2\times 2$$ linear solver with row/column scaling and Tikhonov regularization,
-- Control of the working precision through `mp.mp.dps`.
+To execute successfully, this main script relies on a hierarchical structure of dependencies. It primarily calls the central wrapper (`SemianalyticalParametricSolver_exact_inputs.wl`)[cite: 8], which in turn loads the base parameters and all the validated analytical modules[cite: 9]. 
 
-This implementation is used as a benchmark to assess conditioning effects and to validate the double-precision results obtained with SciPy/NumPy.
-
----
-
-### 3. `C_precursor_SciPyNumPy.py`
-
-This script computes the delayed neutron precursor concentration $$C(t)$$ using the convolution formula
-
-$$
-C(t)
-= C(0)\,e^{-\lambda t}
-+ \frac{\beta}{\Lambda}\,e^{-\lambda t}
-\int_0^t e^{\lambda\tau}\,n(\tau)\,d\tau.
-$$
-
-The integral is evaluated numerically using `scipy.integrate.cumulative_trapezoid`.  
-The function $$n(t)$$ is imported from `Neutron_density_SciPyNumPy.py`, and the script returns a vectorized approximation of $$C(t)$$ over a prescribed time grid.
-
----
-
-### 4. `RK4_reference_mpmath.py`
-
-This script implements a **fourth–order Runge–Kutta (RK4)** solver in 32-digit precision (via mpmath) for the NPKE system.  
-
-It solves simultaneously for \(n(t)\) and \(C(t)\) using a fine time step, and the resulting numerical solution is used as a high-accuracy reference to validate the analytical formulations and their numerical implementation.
-
-Parameters, time step, and integration interval can be adjusted to reproduce the tables and figures reported in the manuscript.
+<div style="background:#f1f7ff; padding:15px; border-left:4px solid #4a90e2; border-radius:8px; margin-top:20px;">
+  <strong>📂 Required Dependency Modules:</strong>
+  <ul style="margin-top: 10px; margin-bottom: 0;">
+    <li><code>SemianalyticalParametricSolver_exact_inputs.wl</code> (Central Wrapper)[cite: 8]</li>
+    <li><code>Parameters.wl</code> (Base variables)[cite: 9]</li>
+    <li><code>PoissonBoltzmann_parametric.wl</code>[cite: 9]</li>
+    <li><code>F_cc_parametric.wl</code>[cite: 9]</li>
+    <li><code>Lambda_parameter_parametric.wl</code>[cite: 9]</li>
+    <li><code>MR_parametric.wl</code>[cite: 9]</li>
+    <li><code>HR_parametric.wl</code>[cite: 9]</li>
+    <li><code>F0_parametric.wl</code>[cite: 9]</li>
+    <li><code>F1_parametric.wl</code>[cite: 9]</li>
+    <li><code>Omega_parameter_parametric.wl</code>[cite: 9]</li>
+    <li><code>F_parametric.wl</code>[cite: 9]</li>
+    <li><code>G_parametric.wl</code>[cite: 9]</li>
+  </ul>
+</div>
