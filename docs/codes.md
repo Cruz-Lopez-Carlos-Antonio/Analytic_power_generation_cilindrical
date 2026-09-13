@@ -76,18 +76,9 @@ The numerical intervals used for the parametric studies are defined manually at 
 
 **Interval for $\Psi_s$:**
 ```mathematica
-PhiAvPsiSValues = {
-   -13/10,
-   -123249/100000,
-   -6/5,
-   -11/10,
-   -1,
-   -9/10,
-   -4/5,
-   -7/10,
-   -3/5,
-   -1/2
-};
+PhiAvPsiSValues = {-13/10,-123249/100000,
+   -6/5,-11/10,-1,-9/10,-4/5,
+   -7/10,-3/5,-1/2};
 ```
 
 **Interval for $\Lambda$:**
