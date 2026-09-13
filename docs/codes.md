@@ -55,18 +55,18 @@ To execute successfully, this main script relies on a hierarchical structure of 
 <div style="background:#f1f7ff; padding:15px; border-left:4px solid #4a90e2; border-radius:8px; margin-top:20px;">
   <strong>📂 Required Dependency Modules:</strong>
   <ul style="margin-top: 10px; margin-bottom: 0;">
-    <li><code>SemianalyticalParametricSolver_exact_inputs.wl</code> (Central Wrapper)[cite: 8]</li>
-    <li><code>Parameters.wl</code> (Base variables)[cite: 9]</li>
-    <li><code>PoissonBoltzmann_parametric.wl</code>[cite: 9]</li>
-    <li><code>F_cc_parametric.wl</code>[cite: 9]</li>
-    <li><code>Lambda_parameter_parametric.wl</code>[cite: 9]</li>
-    <li><code>MR_parametric.wl</code>[cite: 9]</li>
-    <li><code>HR_parametric.wl</code>[cite: 9]</li>
-    <li><code>F0_parametric.wl</code>[cite: 9]</li>
-    <li><code>F1_parametric.wl</code>[cite: 9]</li>
-    <li><code>Omega_parameter_parametric.wl</code>[cite: 9]</li>
-    <li><code>F_parametric.wl</code>[cite: 9]</li>
-    <li><code>G_parametric.wl</code>[cite: 9]</li>
+    <li><code>SemianalyticalParametricSolver_exact_inputs.wl</code> (Central Wrapper)</li>
+    <li><code>Parameters.wl</code> (Base variables)</li>
+    <li><code>PoissonBoltzmann_parametric.wl</code></li>
+    <li><code>F_cc_parametric.wl</code></li>
+    <li><code>Lambda_parameter_parametric.wl</code></li>
+    <li><code>MR_parametric.wl</code></li>
+    <li><code>HR_parametric.wl</code></li>
+    <li><code>F0_parametric.wl</code></li>
+    <li><code>F1_parametric.wl</code></li>
+    <li><code>Omega_parameter_parametric.wl</code></li>
+    <li><code>F_parametric.wl</code></li>
+    <li><code>G_parametric.wl</code></li>
   </ul>
 </div>
 
