@@ -18,7 +18,7 @@ $$
 
 where $\delta$ is the electrokinetic radius, $\Psi_s$ is the surface potential, and $\text{set}$ represents a grouped array of additional input parameters (such as the viscoelectric parameter $\omega$, the coupling parameter $\Lambda$, and the longitudinal pressure measure $\Pi_D$) evaluated seamlessly by the solver. The corresponding efficiency solver $\eta(\delta, \Psi_s, \text{set})$ will be incorporated once its definitive module is validated.
 
-### Main Script and Dependencies
+### 1.1 Main Script and Dependencies
 
 The automated parametric studies for $\Phi_{\mathrm{av}}$ are generated using the main script, available here:
 
@@ -32,14 +32,14 @@ To execute successfully, this main script relies on a hierarchical structure of 
     <li><code>SemianalyticalParametricSolver_exact_inputs.wl</code> (Central Wrapper)</li>
     <li><code>Parameters.wl</code> (Base variables)</li>
     <li><code>PoissonBoltzmann_parametric.wl</code></li>
-    <li><code>F_cc_parametric.wl</code>[cite: 9]</li>
+    <li><code>F_cc_parametric.wl</code></li>
     <li><code>Lambda_parameter_parametric.wl</code></li>
     <li><code>MR_parametric.wl</code></li>
     <li><code>HR_parametric.wl</code></li>
     <li><code>F0_parametric.wl</code></li>
     <li><code>F1_parametric.wl</code></li>
-    <li><code>Omega_parameter_parametric.wl</code>[cite: 9]</li>
-    <li><code>F_parametric.wl</code>[cite: 9]</li>
-    <li><code>G_parametric.wl</code>[cite: 9]</li>
+    <li><code>Omega_parameter_parametric.wl</code></li>
+    <li><code>F_parametric.wl</code></li>
+    <li><code>G_parametric.wl</code></li>
   </ul>
 </div>
