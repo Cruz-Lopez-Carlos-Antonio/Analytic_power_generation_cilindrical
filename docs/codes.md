@@ -15,33 +15,33 @@ Depending on the specific numerical experiment, the general code automatically g
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
 \begin{aligned}
-\Phi_{\mathrm{av}} &= \Phi_{\mathrm{av}}(\delta, \Psi_s, \Gamma_1) \\
-\Phi_{\mathrm{av}} &= \Phi_{\mathrm{av}}(\delta, \omega, \Gamma_2) \\
-\Phi_{\mathrm{av}} &= \Phi_{\mathrm{av}}(\delta, \Lambda, \Gamma_3)
+\Phi_{\mathrm{av}} &= \Phi_{\mathrm{av}}(\delta, \Psi_s, \Gamma_1), \\
+\Phi_{\mathrm{av}} &= \Phi_{\mathrm{av}}(\delta, \omega, \Gamma_2), \\
+\Phi_{\mathrm{av}} &= \Phi_{\mathrm{av}}(\delta, \Lambda, \Gamma_3),
 \end{aligned}
 $$
 </div>
 
-where $\delta$ is the electrokinetic radius, $\Psi_s$ is the surface potential, $\omega$ is the viscoelectric parameter, and $\Lambda$ is the electrokinetic coupling parameter. The term $\Gamma_i$ represents the complementary set of fixed physical variables supplied by the base configuration (`Parameters.wl`)[cite: 11], explicitly excluding the parameter currently being varied.
+where $\delta$ is the electrokinetic radius, $\Psi_s$ is the surface potential, $\omega$ is the viscoelectric parameter, and $\Lambda$ is the electrokinetic coupling parameter. The term $\Gamma_i$ represents the complementary set of fixed physical variables supplied by the base configuration (`Parameters.wl`), explicitly excluding the parameter currently being varied.
 
 *   $\Gamma_1 = \{\omega, \Lambda, \Pi_D\}$
 *   $\Gamma_2 = \{\Psi_s, \Lambda, \Pi_D\}$
 *   $\Gamma_3 = \{\Psi_s, \omega, \Pi_D\}$
 
-*(Note: Although the longitudinal pressure measure $\Pi_D$ is formally part of the parametric solver inputs, the average streaming potential is analytically independent of this parameter. Therefore, parametric sweeps involving $\Pi_D$ are programmatically skipped by the main script to save computational resources).*[cite: 8]
+*(Note: Although the longitudinal pressure measure $\Pi_D$ is formally part of the parametric solver inputs, the average streaming potential is analytically independent of this parameter. Therefore, parametric sweeps involving $\Pi_D$ are programmatically skipped by the main script to save computational resources).*
 
 ### 1.1 Evaluated Intervals
 
-The automated sweeps are defined over the following numerical domains:[cite: 8]
+The automated sweeps are defined over the following numerical domains:
 
-*   **Electrokinetic radius ($\delta$):** From $1$ to $30$ with step increments of $1$.[cite: 8]
-*   **Surface potential ($\Psi_s$):** $\{-1.3, -1.23249, -1.2, -1.1, -1.0, -0.9, -0.8, -0.7, -0.6, -0.5\}$.[cite: 8]
-*   **Viscoelectric parameter ($\omega$):** From $0$ to $0.005$ with increments of $0.0005$.[cite: 8]
-*   **Coupling parameter ($\Lambda$):** From $0.15$ to $1.05$ with increments of $0.15$.[cite: 8]
+*   **Electrokinetic radius ($\delta$):** From $1$ to $30$ with step increments of $1$.
+*   **Surface potential ($\Psi_s$):** $\{-1.3, -1.23249, -1.2, -1.1, -1.0, -0.9, -0.8, -0.7, -0.6, -0.5\}$.
+*   **Viscoelectric parameter ($\omega$):** From $0$ to $0.005$ with increments of $0.0005$.
+*   **Coupling parameter ($\Lambda$):** From $0.15$ to $1.05$ with increments of $0.15$.
 
 <div style="border-left: 4px solid #f39c12; padding: 0.7em 1em; background: #fff7e6; margin: 20px 0;">
 <b style="color:#c0392b;">⚠️ Important regarding numerical precision:</b><br>
-When evaluating individual points using the solver module, any explicit parameter value supplied must be an <strong>exact number</strong> (integer or rational fraction, e.g., <code>45/100</code>). Do not supply machine-precision decimals (e.g., <code>0.45</code>), as the solver deliberately preserves infinite precision strings and will fail to execute inexact inputs.[cite: 9]
+When evaluating individual points using the solver module, any explicit parameter value supplied must be an <strong>exact number</strong> (integer or rational fraction, e.g., <code>45/100</code>). Do not supply machine-precision decimals (e.g., <code>0.45</code>), as the solver deliberately preserves infinite precision strings and will fail to execute inexact inputs.
 </div>
 
 ### 1.2 Main Script and Dependencies
@@ -50,7 +50,7 @@ The automated parametric studies for $\Phi_{\mathrm{av}}$ are generated using th
 
 👉 <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/GeneratePhiAvParametricStudy.wl" target="_blank" rel="noopener noreferrer">GeneratePhiAvParametricStudy.wl</a>
 
-To execute successfully, this main script relies on a hierarchical structure of dependencies. It primarily calls the central wrapper (`SemianalyticalParametricSolver_exact_inputs.wl`)[cite: 8], which in turn loads the base parameters and all the validated analytical modules[cite: 9]. 
+To execute successfully, this main script relies on a hierarchical structure of dependencies. It primarily calls the central wrapper (`SemianalyticalParametricSolver_exact_inputs.wl`), which in turn loads the base parameters and all the validated analytical modules. 
 
 <div style="background:#f1f7ff; padding:15px; border-left:4px solid #4a90e2; border-radius:8px; margin-top:20px;">
   <strong>📂 Required Dependency Modules:</strong>
