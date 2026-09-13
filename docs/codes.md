@@ -6,7 +6,7 @@ math: true
 
 # Semianalytical Parametric Solvers
 
-The computational core of this repository focuses on solving two primary physical variables of interest: the average streaming potential, $\Phi_{\mathrm{av}}$, and the conversion efficiency, $\eta$, whose expressions are explicitly given in Section 4 of this repository. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs. 
+The computational core of this repository focuses on solving two primary physical variables of interest: the average streaming potential, $\Phi_{\mathrm{av}}$, and the conversion efficiency, $\eta$, whose expressions are explicitly given in [the Semi-analytic Solution section](https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/docs/semianalytic.md#streaming-potential-and-conversion-efficiency) of this repository. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs. 
 
 ## 1. Average Streaming potential, $\Phi_{\mathrm{av}}$:
 
@@ -32,7 +32,7 @@ where $\delta$ is the electrokinetic radius, $\Psi_s$ is the surface potential, 
 
 ### 1.1 Evaluated Intervals
 
-The automated sweeps are defined over the following numerical domains:
+By default, the automated sweeps are defined over the following numerical domains:
 
 *   **Electrokinetic radius ($\delta$):** From $1$ to $30$ with step increments of $1$.
 *   **Surface potential ($\Psi_s$):** $\{-1.3, -1.23249, -1.2, -1.1, -1.0, -0.9, -0.8, -0.7, -0.6, -0.5\}$.
@@ -69,3 +69,39 @@ To execute successfully, this main script relies on a hierarchical structure of 
     <li><code>G_parametric.wl</code>[cite: 9]</li>
   </ul>
 </div>
+
+### 1.3 Modification of the Input Intervals
+
+The numerical intervals used for the parametric studies are defined manually at the very end of the `GeneratePhiAvParametricStudy.wl` script. If user needs to evaluate a different range of physical parameters, you can directly modify these exact arrays within the code.
+
+**Interval for $\Psi_s$:**
+```mathematica
+PhiAvPsiSValues = {
+   -13/10,
+   -123249/100000,
+   -6/5,
+   -11/10,
+   -1,
+   -9/10,
+   -4/5,
+   -7/10,
+   -3/5,
+   -1/2
+};
+```
+
+**Interval for $\Lambda$:**
+```mathematica
+PhiAvLambdaValues =
+   Range[15, 105, 15]/100;
+```
+**Interval for $\omega$:**
+```mathematica
+PhiAvLambdaValues =
+   Range[15, 105, 15]/100;
+```
+
+
+
+
+
