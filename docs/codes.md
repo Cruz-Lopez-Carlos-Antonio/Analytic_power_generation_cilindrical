@@ -6,7 +6,9 @@ math: true
 
 # Semianalytical Parametric Solvers
 
-The computational core of this repository focuses on solving two primary physical variables of interest: the average streaming potential, $\Phi_{\mathrm{av}}$, and the conversion efficiency, $\eta$, whose expressions are explicitly given in [the Semi-analytic Solution section](https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/docs/semianalytic.md#streaming-potential-and-conversion-efficiency) of this repository. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs. 
+The computational core of this repository focuses on solving two primary physical variables of interest: the average streaming potential, $\Phi_{\mathrm{av}}$, and the conversion efficiency, $\eta$, whose expressions are explicitly given in [Section 4 of this repository](https://cruz-lopez-carlos-antonio.github.io/Analytic_power_generation_cilindrical/equations.html). These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs. 
+
+---
 
 ## 1. Average Streaming potential, $\Phi_{\mathrm{av}}$:
 
@@ -24,9 +26,9 @@ $$
 
 where $\delta$ is the electrokinetic radius, $\Psi_s$ is the surface potential, $\omega$ is the viscoelectric parameter, and $\Lambda$ is the electrokinetic coupling parameter. The term $\Gamma_i$ represents the complementary set of fixed physical variables supplied by the base configuration (`Parameters.wl`), explicitly excluding the parameter currently being varied.
 
-*   $\Gamma_1 = \{\omega, \Lambda, \Pi_D\}$
-*   $\Gamma_2 = \{\Psi_s, \Lambda, \Pi_D\}$
-*   $\Gamma_3 = \{\Psi_s, \omega, \Pi_D\}$
+*   $\Gamma_1 = \{\omega, \Lambda, \Pi_D, \dots\}$
+*   $\Gamma_2 = \{\Psi_s, \Lambda, \Pi_D, \dots\}$
+*   $\Gamma_3 = \{\Psi_s, \omega, \Pi_D, \dots\}$
 
 *(Note: Although the longitudinal pressure measure $\Pi_D$ is formally part of the parametric solver inputs, the average streaming potential is analytically independent of this parameter. Therefore, parametric sweeps involving $\Pi_D$ are programmatically skipped by the main script to save computational resources).*
 
@@ -56,6 +58,11 @@ To execute successfully, this main script relies on a hierarchical structure of 
   <strong>📂 Required Dependency Modules:</strong>
   <ul style="margin-top: 10px; margin-bottom: 0;">
     <li><code>SemianalyticalParametricSolver_exact_inputs.wl</code> (Central Wrapper)</li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/SemianalyticalParametricSolver_exact_inputs.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>SemianalyticalParametricSolver_exact_inputs.wl</code>
+      </a> (Central Wrapper)
+    </li>
+    <li><code>Parameters.wl</code> (Base variables)</li>
     <li><code>Parameters.wl</code> (Base variables)</li>
     <li><code>PoissonBoltzmann_parametric.wl</code></li>
     <li><code>F_cc_parametric.wl</code></li>
