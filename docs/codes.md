@@ -6,7 +6,7 @@ math: true
 
 # Semianalytical Parametric Solvers
 
-The computational core of this repository focuses on solving two primary physical variables of interest: the average streaming potential, $\Phi_{\mathrm{av}}$, and the conversion efficiency, $\eta$, whose expressions are explicitly given in [Section Equations of this repository](https://cruz-lopez-carlos-antonio.github.io/Analytic_power_generation_cilindrical/equations.html). These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs. 
+The computational core of this repository focuses on solving two primary physical variables of interest: the average streaming potential, $\Phi_{\mathrm{av}}$, and the conversion efficiency, $\eta$, whose expressions are explicitly given in the [Section of Equations](https://cruz-lopez-carlos-antonio.github.io/Analytic_power_generation_cilindrical/equations.html) of this repository. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs. 
 
 ---
 
