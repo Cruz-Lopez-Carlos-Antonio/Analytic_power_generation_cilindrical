@@ -6,7 +6,7 @@ math: true
 
 # Semianalytical Parametric Solvers
 
-The computational core of this repository focuses on solving two primary physical variables of interest: the average streaming potential, $\Phi_{\mathrm{av}}$, and the conversion efficiency, $\eta$, whose expressions are explicitly given in [Section 4 of this repository](https://cruz-lopez-carlos-antonio.github.io/Analytic_power_generation_cilindrical/equations.html). These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs. 
+The computational core of this repository focuses on solving two primary physical variables of interest: the average streaming potential, $\Phi_{\mathrm{av}}$, and the conversion efficiency, $\eta$, whose expressions are explicitly given in [Section Equations of this repository](https://cruz-lopez-carlos-antonio.github.io/Analytic_power_generation_cilindrical/equations.html). These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs.. These variables are evaluated as parametric functions, meaning their outputs depend directly on a defined set of physical and geometric inputs. 
 
 ---
 
@@ -57,23 +57,66 @@ To execute successfully, this main script relies on a hierarchical structure of 
 <div style="background:#f1f7ff; padding:15px; border-left:4px solid #4a90e2; border-radius:8px; margin-top:20px;">
   <strong>📂 Required Dependency Modules:</strong>
   <ul style="margin-top: 10px; margin-bottom: 0;">
-    <li><code>SemianalyticalParametricSolver_exact_inputs.wl</code> (Central Wrapper)</li>
+    <li>
       <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/SemianalyticalParametricSolver_exact_inputs.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
         <code>SemianalyticalParametricSolver_exact_inputs.wl</code>
       </a> (Central Wrapper)
     </li>
-    <li><code>Parameters.wl</code> (Base variables)</li>
-    <li><code>Parameters.wl</code> (Base variables)</li>
-    <li><code>PoissonBoltzmann_parametric.wl</code></li>
-    <li><code>F_cc_parametric.wl</code></li>
-    <li><code>Lambda_parameter_parametric.wl</code></li>
-    <li><code>MR_parametric.wl</code></li>
-    <li><code>HR_parametric.wl</code></li>
-    <li><code>F0_parametric.wl</code></li>
-    <li><code>F1_parametric.wl</code></li>
-    <li><code>Omega_parameter_parametric.wl</code></li>
-    <li><code>F_parametric.wl</code></li>
-    <li><code>G_parametric.wl</code></li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/Parameters.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>Parameters.wl</code>
+      </a> (Base variables)
+    </li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/PoissonBoltzmann_parametric.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>PoissonBoltzmann_parametric.wl</code>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/F_cc_parametric.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>F_cc_parametric.wl</code>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/Lambda_parameter_parametric.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>Lambda_parameter_parametric.wl</code>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/MR_parametric.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>MR_parametric.wl</code>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/HR_parametric.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>HR_parametric.wl</code>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/F0_parametric.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>F0_parametric.wl</code>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/F1_parametric.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>F1_parametric.wl</code>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/Omega_parameter_parametric.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>Omega_parameter_parametric.wl</code>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/F_parametric.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>F_parametric.wl</code>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Analytic_power_generation_cilindrical/blob/main/Mathematica/Parametric/G_parametric.wl" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+        <code>G_parametric.wl</code>
+      </a>
+    </li>
   </ul>
 </div>
 
